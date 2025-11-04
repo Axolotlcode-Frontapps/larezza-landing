@@ -1,0 +1,48 @@
+{
+  "name": "template-landing",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "biome format ./src",
+    "format:fix": "biome format --write ./src",
+    "lint": "biome lint ./src",
+    "lint:fix": "biome lint --write ./src",
+    "prepare": "husky",
+    "prepare-message": "czg --hook",
+    "pre-commit": "lint-staged"
+  },
+  "dependencies": {
+    "@astrojs/react": "4.4.0",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@tailwindcss/vite": "^4.1.12",
+    "@types/react": "^19.1.11",
+    "@types/react-dom": "^19.1.8",
+    "astro": "5.14.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.542.0",
+    "preact": "^10.27.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.12"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.2",
+    "cz-git": "^1.12.0",
+    "czg": "^1.12.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.5",
+    "tw-animate-css": "^1.3.7"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,astro}": [
+      "bun run format",
+      "bun run lint"
+    ]
+  }
+}

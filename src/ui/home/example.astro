@@ -1,0 +1,21 @@
+---
+import { Button } from "@/ui/shared/button";
+---
+
+<section class="section example">
+  <div class="section__container example__container">
+    <Button>Click me</Button>
+  </div>
+</section>
+
+<style>
+  @reference "@/styles/app.css";
+
+  .example {
+    @apply p-4;
+  }
+
+  .example__container {
+    @apply flex items-center justify-center;
+  }
+</style>
