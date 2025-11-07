@@ -75,3 +75,32 @@ import Img from "../../assets/images/logo.svg";
     @apply text-accent text-center lg:text-left text-base xl:text-xl;
   }
 </style>
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const footerAnim = document.querySelector('.footer');
+    const info = document.querySelector('.footer__rights');
+
+    (footerAnim as HTMLElement).style.opacity = '0';
+    
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && footerAnim ? footerAnim.classList.add('fadeIn') : null;
+      },
+      { threshold: 0 }
+    );
+    footerAnim ? observer.observe(footerAnim) : null;
+
+    const infoObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && info ? info.classList.add('fadeInFromRight') : null;
+      },
+      { threshold: 0 }
+    );
+    info ? infoObserver.observe(info) : null;
+  });
+</script>

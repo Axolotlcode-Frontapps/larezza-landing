@@ -136,6 +136,8 @@ const links = [
   addEventListener('DOMContentLoaded', () => {
     const headerAnim = document.querySelector('.header');
 
+    (headerAnim as HTMLElement).style.opacity = '0';
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry) return;
