@@ -1,0 +1,32 @@
+<section class="section hero" id="Hero">
+    <div class="section__container hero__container">
+        <div class="hero__information">
+            <h1 class="hero__title font1">Brilla en tu propia piel</h1>
+            <p class="hero__text">Una experiencia de belleza que combina tecnología estética y técnicas manuales expertas.</p>
+        </div>
+    </div>
+</section>
+
+<style>
+  @reference "@/styles/app.css";
+
+  .hero{
+    @apply bg-[url('../../assets/images/header.png')] bg-cover;
+  }
+
+  .hero__container {
+    @apply h-80 sm:h-65 md:h-80 lg:h-105 xl:h-135  2xl:h-155 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[3fr_2.6fr] xl:grid-cols-[3fr_3fr] 2xl:grid-cols-[3fr_3fr];
+  }
+
+  .hero__information{
+    @apply place-content-center md:pt-23 lg:pt-32 xl:pt-35 2xl:pt-48;
+  }
+
+  .hero__title{
+    @apply text-center text-3xl md:text-left sm:text-2xl md:text-3xl lg:text-[42px] xl:text-[50px] 2xl:text-[61px] text-primary font-medium sm:font-semibold mb-3 md:mb-2;
+  }
+
+  .hero__text{
+    @apply text-center text-xl md:text-left sm:text-xl md:text-base lg:text-xl xl:text-2xl 2xl:text-3xl text-primary;
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  text1: string;
+  text2: string;
+  text3: string;
+}
+
+const { title, text1, text2, text3} = Astro.props;
+---
+
+<article class="service">
+    <div class="service__container">
+      <div class="service__circle"></div>
+      <h1 class="service__title">{title}</h1>
+      <ul class="service__list">
+        <li class="service__li">{text1}</li>
+        <li class="service__li">{text2}</li>
+        <li class="service__li">{text3}</li>
+      </ul>
+      <button class="service__button">Saber más...</button>
+    </div>
+</article>
+
+<style>
+  @reference "@/styles/app.css";
+
+  .service__container{
+    @apply relative border-1 text-left border-primary rounded-4xl p-4 lg:p-8 h-full;
+  }
+
+  .service__circle{
+    @apply absolute bg-primary-foreground p-5 lg:p-8 rounded-full top-0 right-0;
+  }
+
+  .service__title{
+    @apply text-lg text-left md:text-2xl text-primary font-bold mb-5 md:mb-8 lg:pr-80;
+  }
+
+  .service__li{
+    @apply text-left text-base text-primary mb-2;
+  }
+
+  .service__button{
+    @apply text-base md:text-lg mt-5 text-primary border-1 border-primary py-2 px-4 rounded-lg cursor-pointer hover:bg-primary-foreground hover:text-white;
+  }
+</style>
