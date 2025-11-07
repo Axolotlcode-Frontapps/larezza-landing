@@ -1,0 +1,129 @@
+<!-- "use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
+const formSchema = z.object({
+  nombre: z.string().min(1, { message: "Nombre es requerido" }),
+  apellido: z.string().min(1, { message: "Apellido es requerido" }),
+  email: z.string().email({ message: "Correo inválido" }),
+  telefono: z.string().min(1, { message: "Teléfono es requerido" }),
+  mensaje: z.string().min(1, { message: "Mensaje es requerido" }),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
+export function ScheduleForm() {
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      nombre: "",
+      apellido: "",
+      email: "",
+      telefono: "",
+      mensaje: "",
+    },
+  });
+
+  function onSubmit(data: FormValues) {
+    console.log("Enviar datos:", data);
+  }
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="nombre"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nombre</FormLabel>
+                <FormControl>
+                  <Input placeholder="Nombre" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="apellido"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Apellido</FormLabel>
+                <FormControl>
+                  <Input placeholder="Apellido" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Dirección de correo electrónico</FormLabel>
+                <FormControl>
+                  <Input type="email" placeholder="correo@ejemplo.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="telefono"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Teléfono</FormLabel>
+                <FormControl>
+                  <Input type="tel" placeholder="55 0000 1234" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <FormField
+          control={form.control}
+          name="mensaje"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Mensaje</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Introduce tu pregunta o mensaje"
+                  rows={6}
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <Button type="submit">Enviar</Button>
+      </form>
+    </Form>
+  );
+} -->

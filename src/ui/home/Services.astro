@@ -1,0 +1,65 @@
+---
+import { Image } from 'astro:assets';
+import Img1 from "../../assets/images/service.png";
+
+import {CardServices} from "../shared/services-cards"
+
+const missionData = [
+    {
+        title: "Facial de hidratación",
+        text1: "* Hidrata, nutre, suaviza, ilumina y revitaliza.",
+        text2: "* Restaura la humedad natural mejorando su suavidad, elasticidad y brillo.",
+        text3: "* Ideal para piel seca o deshidratada.",
+    },
+    {
+        title: "Facial limpieza profunda",
+        text1: "* Limpia, purifica, equilibra, renueva y desintoxica.",
+        text2: "* Elimina impurezas, puntos negros y exceso de grasa.",
+        text3: "* Deja la piel limpia y equilibrada.",
+    },
+];
+---
+
+<section class="section services" id="Services">
+    <div class="section__container services__container">
+        <div class="services__image">
+            <Image src={Img1} alt="statistics" class="md:h-80 md:w-65 lg:h-95 lg:w-75 xl:h-115 xl:w-95 2xl:h-135 2xl:w-115" />
+        </div> 
+        <div class="services__information">
+            <h1 class="services__title">Nuestros Servicios:</h1>
+            <p class="services__text">En Larezza no solo cuidamos tu piel, cuidamos de ti.</p>
+            <div class="services__cards">
+                {missionData.map((card) => <CardServices {...card} />)}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+@reference "@/styles/app.css";
+
+.services__container{
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_3fr] py-10;
+}
+
+.services__image{
+    @apply place-content-center;
+}
+
+.services__information{
+    @apply text-center md:text-left py-10 md:py-0;
+}
+
+.services__title{
+    @apply text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl text-primary font-medium mb-3;
+}
+
+.services__text{
+    @apply text-xl lg:text-2xl text-primary mb-6 md:mb-0 lg:mb-6;
+}
+
+.services__cards{
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
+}
+
+</style>

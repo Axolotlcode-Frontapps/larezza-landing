@@ -1,5 +1,15 @@
+---
+import Img from "../../../assets/images/logo-header.svg";
+---
+
 <header class="section header">
-  <div class="section__container header__container">Contenido del header</div>
+  <div class="section__container header__container">
+    <Img />
+    <a class="header__option" href = "index.html#Header">Inicio</a>
+    <a class="header__option" href = "index.html#Services">Servicios</a>
+    <a class="header__option" href = "index.html#AboutUs">Nosotros</a>
+    <button class="header__button">Agenda tu cita</button>
+  </div>
 </header>
 
 <style>
@@ -10,6 +20,14 @@
   }
 
   .header__container {
-    @apply w-full;
+    @apply w-full text-primary-foreground;
+  }
+
+  .header__option{
+    @apply hover:underline;
+  }
+
+  .header__button{
+    @apply text-white bg-primary-foreground py-2 px-5 rounded-full cursor-pointer;
   }
 </style>

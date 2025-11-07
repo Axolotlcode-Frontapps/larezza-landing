@@ -1,2 +1,2 @@
 bun run build
-exec < /dev/tty && bun run prepare-message || true
+# exec < /dev/tty && bun run prepare-message || true

@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import Img from "../../assets/images/massages.png";
+
+import { CardMassages } from "../shared/massage-cards";
+
+const missionData = [
+    {
+        title: "Masaje relajante",
+        text: "Reduce el estrés, mejora el descanso y promueve una sensación profunda de bienestar. Ideal para reconectar contigo después de una semana intensa.",
+    },
+    {
+        title: "Masaje descontracturante",
+        text: "Técnica terapéutica que libera tensiones musculares profundas en espalda, cuello y hombros. Recupera la movilidad y alivia el dolor acumulado.",
+    },
+    {
+        title: "Drenaje linfático",
+        text: "Estimula la circulación, favorece la eliminación de líquidos retenidos y ayuda a desintoxicar el organismo de manera suave y natural.",
+    },
+    {
+        title: "Masaje reductivo",
+        text: "Activa, tonifica y moldea la silueta mediante movimientos firmes que ayudan a movilizar grasa localizada y mejorar la apariencia corporal.",
+    },
+];
+---
+
+<section class="section massages">
+    <div class="section__container massages__container">
+        <div class="massages__information">
+            <h1 class="massages__title">Masajes</h1>
+            <p class="massages__text">Relájate, respira y deja que nuestras manos expertas restauren tu energía y armonía interior.</p>
+            <div class="massages__cards">
+                 {missionData.map((card) => <CardMassages {...card} />)}
+            </div>
+        </div>
+        <div class="massages__image"><Image src={Img} alt="statistics" class="h-100 w-80 lg:h-160 lg:w-130 xl:h-180 xl:w-150" /></div> 
+    </div>
+</section>
+
+<style>
+@reference "@/styles/app.css";
+
+.massages{
+    @apply bg-gradient-to-b from-foreground to-white;
+}
+
+.massages__container{
+    @apply grid grid-cols-1 lg:grid-cols-2 py-10 gap-8 xl:gap-10;
+}
+
+.massages__title{
+    @apply text-center lg:text-left text-3xl md:text-6xl text-primary font-medium mb-3;
+}
+
+.massages__text{
+    @apply text-center lg:text-left text-xl md:text-2xl text-primary mb-6;
+}
+
+.massages__cards{
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4;
+}
+
+.massages__image{
+    @apply flex place-items-center justify-center;
+}
+</style>

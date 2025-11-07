@@ -1,0 +1,58 @@
+---
+interface Props {
+    bg: string,
+    title: string,
+    text: string,
+}
+
+const { bg, title, text} = Astro.props
+---
+
+<article class="experience">
+    <div class="experience__container">
+        <div class={`experience__image ${bg}`}></div>
+        <div class="experience__information">
+            <h1 class="experience__title">{title}</h1>
+            <p class="experience__text">{text}</p>
+        </div>
+    </div>
+</article>
+
+<style>
+  @reference "@/styles/app.css";
+
+  .experience__container{
+    @apply transform hover:scale-105 hover:shadow-xl duration-500;
+  }
+  .experience__image{
+    @apply h-30 rounded-t-lg;
+  }
+
+  .experience__card1{
+    @apply bg-[url('../../../assets/images/card1.png')];
+  }
+
+  .experience__card2{
+    @apply bg-[url('../../../assets/images/card2.png')];
+  }
+
+  .experience__card3{
+    @apply bg-[url('../../../assets/images/card3.png')];
+  }
+
+  .experience__card4{
+    @apply bg-[url('../../../assets/images/card4.png')];
+  }
+
+  .experience__information{
+    @apply bg-primary-foreground text-white text-center rounded-b-lg p-4 place-content-center md:place-content-start h-35 md:h-30 lg:h-35 xl:h-30;
+  }
+
+  .experience__title{
+    @apply text-xl 2xl:text-2xl font-semibold;
+  }
+
+  .experience__text{
+    @apply text-base xl:text-lg 2xl:text-xl 2xl:px-15;
+  }
+</style>

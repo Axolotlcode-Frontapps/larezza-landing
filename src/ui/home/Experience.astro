@@ -1,0 +1,47 @@
+---
+import { CardExperience } from "../shared/experience-cards";
+
+const missionData = [
+    {
+        bg: "experience__card1",
+        title: "Personalización",
+        text: "Cada tratamiento es único, como tú.",
+    },
+    {
+        bg: "experience__card2",
+        title: "Bienestar holístico",
+        text: "Cuerpo, mente y piel en armonía.",
+    },
+    {
+        bg: "experience__card3",
+        title: "Profesionalismo humano",
+        text: "Tecnología y técnica con calidez.",
+    },
+    {
+        bg: "experience__card4",
+        title: "Brillo natural",
+        text: "No transformamos, revelamos tu luz.",
+    },
+];
+
+---
+
+<section class="section experience">
+    <div class="section__container experience__container">
+        <div class="experience__cards">
+            {missionData.map((card) => <CardExperience {...card} />)}
+        </div>
+    </div>
+</section>
+
+<style>
+  @reference "@/styles/app.css";
+
+  .experience__container{
+    @apply py-10;
+  }
+
+  .experience__cards{
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4;
+  }
+</style>
