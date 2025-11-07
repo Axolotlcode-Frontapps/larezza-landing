@@ -23,7 +23,6 @@ const missionData = [
         text: "No transformamos, revelamos tu luz.",
     },
 ];
-
 ---
 
 <section class="section experience">
@@ -35,13 +34,16 @@ const missionData = [
 </section>
 
 <style>
-  @reference "@/styles/app.css";
+    @reference "@/styles/app.css";
+    .experience {
+        @apply bg-gradient-to-b from-[#E6E2D7] to-white;
+    }
 
-  .experience__container{
-    @apply py-10;
-  }
+    .experience__container {
+        @apply py-10;
+    }
 
-  .experience__cards{
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4;
-  }
+    .experience__cards {
+        @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4;
+    }
 </style>

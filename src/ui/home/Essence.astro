@@ -3,20 +3,32 @@ import Image from "../../assets/images/essence.svg";
 ---
 
 <section class="section essence" id="AboutUs">
-    <div class="section__container essence__container">
-        <div class="essence__information">
-            <h1 class="essence__title">Nuestra esencia</h1>
-            <p class="essence__text">En <span class="essence__span">Larezza</span> creemos que la verdadera belleza surge cuando cuerpo y alma están en equilibrio.</p>
-            <p class="essence__text">No transformamos, revelamos tu luz interior.</p>
-        </div>
-        <div class="essence__image"> <Image class=" size-65 sm:size-115 md:size-100 lg:size-110 xl:size-150 2xl:size-190"/></div>
+  <div class="section__container essence__container">
+    <div class="essence__information">
+      <h1 class="essence__title">Nuestra esencia</h1>
+      <p class="essence__text">
+        En <span class="essence__span">Larezza</span> creemos que la verdadera belleza
+        surge cuando cuerpo y alma están en equilibrio.
+      </p>
+      <p class="essence__text">No transformamos, revelamos tu luz interior.</p>
     </div>
+    <div class="essence__image">
+      <Image
+        class="size-65 sm:size-115 md:size-100 lg:size-110 xl:size-150 2xl:size-190"
+      />
+    </div>
+  </div>
+  <div class="essence__image">
+    <Image
+      class="size-60 sm:size-115 md:size-100 lg:size-110 xl:size-150 2xl:size-190"
+    />
+  </div>
 </section>
 
 <style>
   @reference "@/styles/app.css";
 
-  .essence{
+  .essence {
     @apply bg-gradient-to-t from-foreground to-white;
   }
 
@@ -24,23 +36,23 @@ import Image from "../../assets/images/essence.svg";
     @apply grid grid-cols-1 md:grid-cols-[2fr_3fr] lg:grid-cols-2  xl:grid-cols-[2fr_3fr] py-10;
   }
 
-  .essence__information{
+  .essence__information {
     @apply text-center md:text-left md:place-content-center;
   }
 
-  .essence__title{
+  .essence__title {
     @apply text-3xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-primary font-medium mb-3;
   }
 
-  .essence__text{
+  .essence__text {
     @apply text-xl lg:text-2xl text-primary mb-6 md:mr-5;
   }
 
-  .essence__span{
+  .essence__span {
     @apply font-bold;
   }
 
-  .essence__image{
+  .essence__image {
     @apply flex justify-center md:justify-end;
   }
 </style>

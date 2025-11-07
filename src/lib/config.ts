@@ -1,4 +1,4 @@
 export const config = {
-	brand: "Name",
-	description: "Description",
+	brand: "Larezza",
+	description: "Larezza - Centro de masajes y bienestar",
 };

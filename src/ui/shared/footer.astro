@@ -1,24 +1,28 @@
 ---
-import Img from "../../assets/images/logo.svg";
 import FacebookIcon from "../../assets/icons/facebook.svg";
 import InstagramIcon from "../../assets/icons/instagram.svg";
 import TiktokIcon from "../../assets/icons/tiktok.svg";
+import Img from "../../assets/images/logo.svg";
 ---
 
 <footer class="section footer">
   <div class="section__container footer__container">
     <div class="footer__information">
       <div class="footer__title">
-        <h1 class="footer__text">Belleza consciente, glow saludable y bienestar como estilo de vida.</h1>
+        <h1 class="footer__text">
+          Belleza consciente, glow saludable y bienestar como estilo de vida.
+        </h1>
       </div>
       <div class="footer__rights">
-        <div class="footer__logo"><Img /></div> 
+        <div class="footer__logo"><Img /></div>
         <div class="footer__social">
-          <FacebookIcon/>
-          <InstagramIcon/>
-          <TiktokIcon/>
-        </div> 
-        <h1 class="footer__autor">© 2025 Spa Larezza. Todos los derechos reservados.</h1>
+          <FacebookIcon />
+          <InstagramIcon />
+          <TiktokIcon />
+        </div>
+        <h1 class="footer__autor">
+          © 2025 Spa Larezza. Todos los derechos reservados.
+        </h1>
       </div>
     </div>
   </div>
@@ -28,34 +32,34 @@ import TiktokIcon from "../../assets/icons/tiktok.svg";
   @reference "@/styles/app.css";
 
   .footer {
-    @apply  border-t border-border py-15 bg-primary;
+    @apply border-t border-border py-15 bg-primary;
   }
 
-  .footer__information{
-    @apply grid grid-cols-1 md:grid-cols-[4fr_3fr] gap-4 lg:gap-6;
+  .footer__information {
+    @apply grid grid-cols-1 md:grid-cols-[4fr_3fr] gap-10;
   }
 
-  .footer__title{
-    @apply bg-muted-foreground rounded-3xl place-content-center py-8 sm:py-15 md:py-0 px-4 xl:mr-10 text-center;
+  .footer__title {
+    @apply w-full bg-muted-foreground rounded-3xl flex items-center justify-center py-8 sm:py-15 md:py-0 px-4 xl:mr-10 text-center;
   }
 
-  .footer__text{
+  .footer__text {
     @apply text-primary text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl;
   }
 
-  .footer__rights{
-    @apply place-items-center lg:place-items-start;
+  .footer__rights {
+    @apply w-full grid place-items-center lg:place-items-start;
   }
 
-  .footer__logo{
-    @apply mb-4 md:mb-6;
+  .footer__logo {
+    @apply mb-4 md:mb-6 grid place-content-center md:place-content-start;
   }
 
-  .footer__social{
-    @apply grid grid-cols-3 xl:grid-cols-12 mb-6 gap-6 lg:gap-1 place-items-center;
+  .footer__social {
+    @apply max-w-sm mx-auto md:mx-0 flex items-center justify-center gap-6 mb-6 md:mb-8 md:justify-start;
   }
 
-  .footer__autor{
-    @apply text-accent text-center xl:text-left text-sm xl:text-xl;
+  .footer__autor {
+    @apply text-accent text-center lg:text-left text-base xl:text-xl;
   }
 </style>
