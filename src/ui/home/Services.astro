@@ -1,8 +1,8 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import Img1 from "../../assets/images/service.png";
 
-import {CardServices} from "../shared/services-cards"
+import { CardServices } from "../shared/services-cards";
 
 const missionData = [
     {
@@ -23,11 +23,17 @@ const missionData = [
 <section class="section services" id="Services">
     <div class="section__container services__container">
         <div class="services__image">
-            <Image src={Img1} alt="statistics" class="max-w max-h" />
-        </div> 
+            <Image
+                src={Img1}
+                alt="statistics"
+                class="w-full h-auto max-h-[500px] max-w-[300px] mx-auto md:mx-0 md:max-h-none md:max-w-none"
+            />
+        </div>
         <div class="services__information">
             <h1 class="services__title">Nuestros Servicios:</h1>
-            <p class="services__text">En Larezza no solo cuidamos tu piel, cuidamos de ti.</p>
+            <p class="services__text">
+                En Larezza no solo cuidamos tu piel, cuidamos de ti.
+            </p>
             <div class="services__cards">
                 {missionData.map((card) => <CardServices {...card} />)}
             </div>
@@ -36,30 +42,34 @@ const missionData = [
 </section>
 
 <style>
-@reference "@/styles/app.css";
+    @reference "@/styles/app.css";
 
-.services__container{
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_3fr] md:gap-5 lg:gap-8 py-10;
-}
+    .services {
+        @apply bg-foreground bg-gradient-to-t to-foreground from-foreground;
+    }
 
-.services__image{
-    @apply place-content-center;
-}
+    .services__container {
+        @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_3fr] gap-10 py-10 place-items-center;
+        /* @apply bg-foreground bg-gradient-to-b to-white; */
+    }
 
-.services__information{
-    @apply text-center md:text-left py-10 md:py-0;
-}
+    .services__image {
+        @apply w-full place-content-center;
+    }
 
-.services__title{
-    @apply text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl text-primary font-medium mb-3;
-}
+    .services__information {
+        @apply w-full text-center md:text-left py-10 md:py-0;
+    }
 
-.services__text{
-    @apply text-xl lg:text-2xl text-primary mb-6 md:mb-0 lg:mb-6;
-}
+    .services__title {
+        @apply text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl text-primary font-medium mb-3;
+    }
 
-.services__cards{
-    @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
-}
+    .services__text {
+        @apply text-xl lg:text-2xl text-primary mb-6 md:mb-0 lg:mb-6;
+    }
 
+    .services__cards {
+        @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
+    }
 </style>
