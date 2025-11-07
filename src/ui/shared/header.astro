@@ -31,6 +31,7 @@ const links = [
     </div>
   </div>
 </section>
+<div class="h-[82px] md:hidden"/>
 
 <style>
   @reference "@/styles/app.css";
@@ -86,9 +87,17 @@ const links = [
     if (burgerBtn && menu && header) {
       burgerBtn.addEventListener("click", () => {
         const isOpen = burgerBtn.getAttribute("data-open") === "true";
+        const body = document.body;
+
         burgerBtn.setAttribute("data-open", String(!isOpen));
         menu.classList.toggle("open", !isOpen);
         header.classList.toggle("open", !isOpen);
+
+        if (!isOpen) {
+          body.style.overflow = "hidden";
+        } else {
+          body.style.overflow = "";
+        }
       });
 
       navItems.forEach((item) => {
@@ -96,6 +105,7 @@ const links = [
           burgerBtn.setAttribute("data-open", "false");
           menu.classList.remove("open");
           header.classList.remove("open");
+          document.body.style.overflow = "";
         });
       });
     }
@@ -132,12 +142,13 @@ const links = [
   });
 </script>
 
+
 <script>
   addEventListener('DOMContentLoaded', () => {
     const headerAnim = document.querySelector('.header');
 
     (headerAnim as HTMLElement).style.opacity = '0';
-    
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry) return;
