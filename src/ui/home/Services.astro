@@ -73,3 +73,40 @@ const missionData = [
         @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
     }
 </style>
+
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const info = document.querySelector('.services__information');
+    const image = document.querySelector('.services__image');
+
+    (info as HTMLElement).style.opacity = '0';
+    (image as HTMLElement).style.opacity = '0';
+
+    const infoObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && info
+          ? info.classList.add('fadeInFromRight')
+          : null;
+      },
+      { threshold: 0 }
+    );
+    info && infoObserver.observe(info);
+
+    const imageObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && image
+          ? image.classList.add('fadeInFromLeft')
+          : null;
+      },
+      { threshold: 0 }
+    );
+    image && imageObserver.observe(image);
+
+
+  });
+</script>
