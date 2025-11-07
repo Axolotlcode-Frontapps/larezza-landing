@@ -3,36 +3,85 @@
         <div class="schedule__information">
             <div class="schedule__titles">
                 <h1 class="schedule__title">Agenda tu momento de bienestar</h1>
-                <h2 class="schedule__subtitle">Reserva tu tratamiento y comienza a brillar en tu propia piel.</h2>
+                <h2 class="schedule__subtitle">
+                    Reserva tu tratamiento y comienza a brillar en tu propia
+                    piel.
+                </h2>
             </div>
             <div class="schedule__form-container">
                 <form class="schedule__form">
                     <div class="schedule__options">
-                         <div>
-                            <label class="schedule__label" for="nombre">Nombre</label>
-                            <input class="schedule__input" type="text" id="nombre" name="nombre" value="Edith" aria-label="Nombre"/>
+                        <div>
+                            <label class="schedule__label" for="nombre"
+                                >Nombre</label
+                            >
+                            <input
+                                class="schedule__input"
+                                type="text"
+                                id="nombre"
+                                name="nombre"
+                                value="Edith"
+                                aria-label="Nombre"
+                            />
                         </div>
                         <div>
-                            <label class="schedule__label" for="apellido">Apellido</label>
-                            <input class="schedule__input" type="text" id="apellido" name="apellido" value="Durán" aria-label="Apellido"/>
+                            <label class="schedule__label" for="apellido"
+                                >Apellido</label
+                            >
+                            <input
+                                class="schedule__input"
+                                type="text"
+                                id="apellido"
+                                name="apellido"
+                                value="Durán"
+                                aria-label="Apellido"
+                            />
                         </div>
                     </div>
                     <div class="schedule__options">
                         <div>
-                            <label class="schedule__label" for="email">Dirección de correo electrónico</label>
-                            <input class="schedule__input" type="email" id="email" name="email"value="correo@ejemplo.com" aria-label="Dirección de correo electrónico"/>
+                            <label class="schedule__label" for="email"
+                                >Correo electrónico</label
+                            >
+                            <input
+                                class="schedule__input"
+                                type="email"
+                                id="email"
+                                name="email"
+                                value="correo@ejemplo.com"
+                                aria-label="Dirección de correo electrónico"
+                            />
                         </div>
                         <div>
-                            <label class="schedule__label" for="telefono">Teléfono</label>
-                            <input class="schedule__input" type="tel" id="telefono" name="telefono" value="55 0000 1234" aria-label="Teléfono"/>
+                            <label class="schedule__label" for="telefono"
+                                >Teléfono</label
+                            >
+                            <input
+                                class="schedule__input"
+                                type="tel"
+                                id="telefono"
+                                name="telefono"
+                                value="55 0000 1234"
+                                aria-label="Teléfono"
+                            />
                         </div>
                     </div>
                     <div class="schedule__box">
-                        <label class="schedule__label" for="mensaje">Mensaje</label>
-                        <textarea class="schedule__input" id="mensaje" name="mensaje" rows="6" placeholder="Introduce tu pregunta o mensaje" aria-label="Mensaje"></textarea>
+                        <label class="schedule__label" for="mensaje"
+                            >Mensaje</label
+                        >
+                        <textarea
+                            class="schedule__input"
+                            id="mensaje"
+                            name="mensaje"
+                            rows="6"
+                            placeholder="Introduce tu pregunta o mensaje"
+                            aria-label="Mensaje"></textarea>
                     </div>
                     <div>
-                        <button class="schedule__button-send" type="submit">Enviar</button>
+                        <button class="schedule__button-send" type="submit"
+                            >Enviar</button
+                        >
                     </div>
                 </form>
             </div>
@@ -40,55 +89,54 @@
     </div>
 </section>
 
-
 <style>
-@reference "@/styles/app.css";
+    @reference "@/styles/app.css";
 
-.schedule{
-    @apply mb-10;
-}
+    .schedule {
+        @apply py-10 bg-gradient-to-t from-[#F4F4F4] to-white;
+    }
 
-.schedule__information{
-    @apply bg-primary grid grid-cols-1 md:grid-cols-2 rounded-3xl p-4 lg:p-8;
-}
+    .schedule__information {
+        @apply bg-primary grid grid-cols-1 md:grid-cols-2 rounded-3xl p-6 lg:p-8;
+    }
 
-.schedule__titles{
-    @apply place-content-center text-white lg:p-8 xl:p-15;
-}
+    .schedule__titles {
+        @apply place-content-center text-white lg:p-8 xl:p-15;
+    }
 
-.schedule__title{
-    @apply text-center md:text-left font-semibold text-xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl mb-2 md:mb-4;
-}
+    .schedule__title {
+        @apply text-center md:text-left font-semibold text-xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl mb-2 md:mb-4;
+    }
 
-.schedule__subtitle{
-    @apply text-center md:text-left text-base md:text-lg lg:text-2xl xl:text-3xl;
-}
+    .schedule__subtitle {
+        @apply text-center md:text-left text-base md:text-lg lg:text-2xl xl:text-3xl;
+    }
 
-.schedule__form-container{
-    @apply xl:px-20;
-}
+    .schedule__form-container {
+        @apply xl:px-20;
+    }
 
-.schedule__form{
-    @apply w-full max-w-2xl md:p-6 rounded-lg;
-}
+    .schedule__form {
+        @apply w-full max-w-2xl md:p-6 rounded-lg;
+    }
 
-.schedule__options{
-    @apply grid grid-cols-1 md:grid-cols-2 gap-6 mb-4;
-}
+    .schedule__options {
+        @apply grid grid-cols-1 lg:grid-cols-2 gap-6 mb-4;
+    }
 
-.schedule__label{
-    @apply block text-sm text-white mb-1;
-}
+    .schedule__label {
+        @apply block text-sm text-white mb-1;
+    }
 
-.schedule__input{
-    @apply w-full p-3 text-xs text-muted rounded-md bg-secondary-foreground;
-}
+    .schedule__input {
+        @apply w-full p-3 text-xs text-muted rounded-md bg-secondary-foreground;
+    }
 
-.schedule__box{
-    @apply mb-4;
-}
+    .schedule__box {
+        @apply mb-4;
+    }
 
-.schedule__button-send{
-    @apply text-sm w-full text-white font-bold bg-primary-foreground py-2 md:px-25 rounded-sm cursor-pointer;
-}
+    .schedule__button-send {
+        @apply text-sm w-full text-white font-bold bg-primary-foreground py-2 md:px-25 rounded-sm cursor-pointer;
+    }
 </style>

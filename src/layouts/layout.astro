@@ -1,15 +1,13 @@
 ---
 import "@/styles/app.css";
-import '@fontsource-variable/montserrat';
-import '@fontsource/bacasime-antique';
 
 import { config } from "@/lib/config";
 import Footer from "@/ui/shared/footer.astro";
 import Header from "@/ui/shared/header/header.astro";
 
 interface Props {
-	title?: string;
-	description?: string;
+  title?: string;
+  description?: string;
 }
 
 const { title = "Home", description = config.description } = Astro.props;
@@ -26,7 +24,7 @@ const { title = "Home", description = config.description } = Astro.props;
     <title>{title} | {config.brand}</title>
   </head>
   <body>
-    <Header />
+    <!-- <Header /> -->
     <main>
       <slot />
     </main>
