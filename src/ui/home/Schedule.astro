@@ -9,7 +9,14 @@
                 </h2>
             </div>
             <div class="schedule__form-container">
-                <form class="schedule__form">
+                <div
+                    id="success-message"
+                    class="success-message"
+                    style="display: none;"
+                >
+                    ¡Mensaje enviado correctamente!
+                </div>
+                <form class="schedule__form" id="contact-form">
                     <div class="schedule__options">
                         <div>
                             <label class="schedule__label" for="nombre"
@@ -20,9 +27,13 @@
                                 type="text"
                                 id="nombre"
                                 name="nombre"
-                                value="Edith"
+                                placeholder="Ingresa tu nombre"
                                 aria-label="Nombre"
                             />
+                            <span
+                                class="error"
+                                id="error-nombre"
+                                style="display: none;"></span>
                         </div>
                         <div>
                             <label class="schedule__label" for="apellido"
@@ -33,9 +44,13 @@
                                 type="text"
                                 id="apellido"
                                 name="apellido"
-                                value="Durán"
+                                placeholder="Ingresa tu apellido"
                                 aria-label="Apellido"
                             />
+                            <span
+                                class="error"
+                                id="error-apellido"
+                                style="display: none;"></span>
                         </div>
                     </div>
                     <div class="schedule__options">
@@ -48,9 +63,13 @@
                                 type="email"
                                 id="email"
                                 name="email"
-                                value="correo@ejemplo.com"
+                                placeholder="ejemplo@correo.com"
                                 aria-label="Dirección de correo electrónico"
                             />
+                            <span
+                                class="error"
+                                id="error-email"
+                                style="display: none;"></span>
                         </div>
                         <div>
                             <label class="schedule__label" for="telefono"
@@ -61,9 +80,13 @@
                                 type="tel"
                                 id="telefono"
                                 name="telefono"
-                                value="55 0000 1234"
+                                placeholder="Ej: +57 123 456 7890"
                                 aria-label="Teléfono"
                             />
+                            <span
+                                class="error"
+                                id="error-telefono"
+                                style="display: none;"></span>
                         </div>
                     </div>
                     <div class="schedule__box">
@@ -77,6 +100,10 @@
                             rows="6"
                             placeholder="Introduce tu pregunta o mensaje"
                             aria-label="Mensaje"></textarea>
+                        <span
+                            class="error"
+                            id="error-mensaje"
+                            style="display: none;"></span>
                     </div>
                     <div>
                         <button class="schedule__button-send" type="submit"
@@ -139,4 +166,192 @@
     .schedule__button-send {
         @apply text-sm w-full text-white font-bold bg-primary-foreground py-2 md:px-25 rounded-sm cursor-pointer;
     }
+
+    .error {
+        @apply text-red-300 text-xs mt-1 block;
+    }
+
+    .success-message {
+        @apply text-green-300 text-sm mb-4 p-3 bg-green-900 rounded;
+    }
 </style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("contact-form") as HTMLFormElement;
+        const successMessage = document.getElementById("success-message");
+
+        if (!form || !successMessage) return;
+
+        // Esquema de validación
+        const validationRules = {
+            nombre: {
+                required: true,
+                minLength: 2,
+                message: "Nombre debe tener al menos 2 caracteres",
+            },
+            apellido: {
+                required: true,
+                minLength: 2,
+                message: "Apellido debe tener al menos 2 caracteres",
+            },
+            email: {
+                required: true,
+                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Correo electrónico inválido",
+            },
+            telefono: {
+                required: true,
+                minLength: 10,
+                message: "Teléfono debe tener al menos 10 dígitos",
+            },
+            mensaje: {
+                required: true,
+                minLength: 10,
+                message: "Mensaje debe tener al menos 10 caracteres",
+            },
+        };
+
+        // Función para mostrar error
+        function showError(fieldName: string, message: string | null) {
+            const errorElement = document.getElementById("error-" + fieldName);
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = "block";
+            }
+        }
+
+        // Función para ocultar error
+        function hideError(fieldName: string) {
+            const errorElement = document.getElementById("error-" + fieldName);
+            if (errorElement) {
+                errorElement.style.display = "none";
+            }
+        }
+
+        // Función para validar un campo
+        function validateField(fieldName: string, value: string) {
+            const rules =
+                validationRules[fieldName as keyof typeof validationRules];
+            if (!rules) return true;
+
+            // Verificar si es requerido
+            if (rules.required && (!value || value.trim() === "")) {
+                showError(fieldName, rules.message);
+                return false;
+            }
+
+            // Verificar longitud mínima
+            if (
+                "minLength" in rules &&
+                rules.minLength &&
+                value.length < rules.minLength
+            ) {
+                showError(fieldName, rules.message);
+                return false;
+            }
+
+            // Verificar patrón (para email)
+            if (
+                "pattern" in rules &&
+                rules.pattern &&
+                !rules.pattern.test(value)
+            ) {
+                showError(fieldName, rules.message);
+                return false;
+            }
+
+            hideError(fieldName);
+            return true;
+        }
+
+        // Función para validar todo el formulario
+        function validateForm(formData: any[] | FormData) {
+            let isValid = true;
+
+            for (const entry of formData.entries()) {
+                const fieldName = entry[0] as string;
+                const value = entry[1] as string;
+                if (!validateField(fieldName, value)) {
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        // Manejar el envío del formulario
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Ocultar mensaje de éxito anterior
+            successMessage.style.display = "none";
+
+            // Obtener datos del formulario
+            const formData = new FormData(form);
+
+            // Validar formulario
+            if (!validateForm(formData)) {
+                return;
+            }
+
+            // Simular envío (aquí puedes añadir tu lógica de envío real)
+            // Por ejemplo, enviar a una API endpoint
+            console.log(
+                "Formulario válido, datos:",
+                Object.fromEntries(formData),
+            );
+
+            // Mostrar mensaje de éxito
+            successMessage.style.display = "block";
+
+            // Limpiar formulario
+            form.reset();
+
+            // Opcional: scroll al mensaje de éxito
+            successMessage.scrollIntoView({ behavior: "smooth" });
+
+            // Ocultar mensaje de éxito después de 5 segundos
+            setTimeout(() => {
+                successMessage.style.display = "none";
+            }, 5000);
+        });
+
+        // Event listener adicional para el botón como respaldo
+        const submitButton = document.querySelector(
+            ".schedule__button-send",
+        ) as HTMLButtonElement;
+        if (submitButton) {
+            submitButton.addEventListener("click", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Disparar manualmente el evento submit del formulario
+                const submitEvent = new Event("submit", {
+                    bubbles: true,
+                    cancelable: true,
+                });
+                form.dispatchEvent(submitEvent);
+            });
+        }
+
+        // Validación en tiempo real
+        const fields = ["nombre", "apellido", "email", "telefono", "mensaje"];
+        fields.forEach(function (fieldName) {
+            const field = document.getElementById(fieldName) as
+                | HTMLInputElement
+                | HTMLTextAreaElement;
+            if (field) {
+                field.addEventListener("blur", function () {
+                    validateField(fieldName, field.value);
+                });
+
+                field.addEventListener("input", function () {
+                    // Ocultar error mientras el usuario está escribiendo
+                    hideError(fieldName);
+                });
+            }
+        });
+    });
+</script>
