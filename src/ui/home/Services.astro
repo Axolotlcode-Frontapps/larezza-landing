@@ -23,7 +23,7 @@ const missionData = [
 <section class="section services" id="Services">
     <div class="section__container services__container">
         <div class="services__image">
-            <Image src={Img1} alt="statistics" class="md:h-80 md:w-65 lg:h-95 lg:w-75 xl:h-115 xl:w-95 2xl:h-135 2xl:w-115" />
+            <Image src={Img1} alt="statistics" class="max-w max-h" />
         </div> 
         <div class="services__information">
             <h1 class="services__title">Nuestros Servicios:</h1>
@@ -39,7 +39,7 @@ const missionData = [
 @reference "@/styles/app.css";
 
 .services__container{
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_3fr] py-10;
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_3fr] md:gap-5 lg:gap-8 py-10;
 }
 
 .services__image{
