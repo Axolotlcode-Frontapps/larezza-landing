@@ -78,7 +78,7 @@ import Image from "../../assets/images/essence.svg";
         if (!entry) return;
         const isVisible = entry.isIntersecting;
         isVisible && image
-          ? image.classList.add('fadeInFromRight')
+          ? image.classList.add('fadeInFromLeft')
           : null;
       },
       { threshold: 0 }

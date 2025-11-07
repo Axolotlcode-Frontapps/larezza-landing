@@ -88,7 +88,7 @@ const missionData = [
         if (!entry) return;
         const isVisible = entry.isIntersecting;
         isVisible && info
-          ? info.classList.add('fadeInFromRight')
+          ? info.classList.add('fadeIn')
           : null;
       },
       { threshold: 0 }
@@ -100,7 +100,7 @@ const missionData = [
         if (!entry) return;
         const isVisible = entry.isIntersecting;
         isVisible && image
-          ? image.classList.add('fadeInFromLeft')
+          ? image.classList.add('fadeIn')
           : null;
       },
       { threshold: 0 }
