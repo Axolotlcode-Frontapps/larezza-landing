@@ -1,0 +1,131 @@
+---
+import { Image } from "astro:assets";
+import Logo from "../../assets/images/logo-header.svg";
+
+const links = [
+  { title: "Inicio", href: "#Hero", section: ".hero" },
+  { title: "Servicios", href: "#Services", section: ".services" },
+  { title: "Nosotros", href: "#AboutUs", section: ".about-us" },
+];
+---
+
+<section class="header section">
+  <div class="header__container section__container">
+    <Image src={Logo} alt="Larezza" class="h-[50px] md:h-[66px]" />
+
+    <button class="burguer" id="burgerBtn" data-open="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div id="menu" class="menu hidden md:flex gap-5 2xl:gap-[100px]">
+      <nav class="header__links flex flex-col md:flex-row items-center gap-5 md:gap-10">
+        {links.map(({ title, href }) => (
+          <a href={href} class="header__link-item nav-item" id={`${title}-id`}>
+            {title}
+          </a>
+        ))}
+      </nav>
+      <a href="#Contacto" class="header__button mt-4 md:mt-0 nav-item">Agendar tu cita</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  @reference "@/styles/app.css";
+
+  .header {
+    @apply w-full bg-[#FFFFFF]/10 backdrop-blur-sm fixed border border-white z-100;
+  }
+  .header__container {
+    @apply w-full flex justify-between items-center py-4;
+  }
+
+  .menu {
+    @apply absolute top-[100%] left-0 md:right-0 w-full md:w-fit bg-white flex-col items-center py-6 transition-all duration-300 ease-in-out md:static md:bg-transparent md:py-0 md:flex-row;
+  }
+  .menu.open {
+    @apply flex;
+  }
+
+  .header__link-item {
+    @apply text-primary-foreground text-2xl font-montserrat hover:cursor-pointer hover:mb-2 transition-all duration-200 ease-in-out;
+  }
+  .header__link-item.active {
+    @apply border-b-2 border-b-primary-foreground;
+  }
+
+  .header__button {
+    @apply text-white text-2xl px-3 py-2 2xl:py-3 2xl:px-[30px] bg-primary-foreground rounded-full font-montserrat;
+  }
+
+  .burguer {
+    @apply flex flex-col items-center gap-[5px] md:hidden;
+    & span {
+      @apply inline-block bg-black h-[3px] w-6 rounded-sm transition-transform duration-300 ease-in-out;
+    }
+    &[data-open="true"] span:nth-child(1) {
+      @apply transform rotate-45 translate-y-2;
+    }
+    &[data-open="true"] span:nth-child(2) {
+      @apply opacity-0;
+    }
+    &[data-open="true"] span:nth-child(3) {
+      @apply transform -rotate-45 -translate-y-2;
+    }
+  }
+</style>
+
+<script>
+  addEventListener("DOMContentLoaded", () => {
+    const burgerBtn = document.getElementById("burgerBtn");
+    const menu = document.getElementById("menu");
+    const navItems = document.querySelectorAll(".nav-item");
+
+    if (burgerBtn && menu) {
+      burgerBtn.addEventListener("click", () => {
+        const isOpen = burgerBtn.getAttribute("data-open") === "true";
+        burgerBtn.setAttribute("data-open", String(!isOpen));
+        menu.classList.toggle("open", !isOpen);
+      });
+
+      navItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          burgerBtn.setAttribute("data-open", "false");
+          menu.classList.remove("open");
+        });
+      });
+    }
+
+    const links = [
+      { id: "Inicio-id", section: ".hero" },
+      { id: "Servicios-id", section: ".services" },
+      { id: "Nosotros-id", section: ".essence" },
+    ];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const link = links.find((l) => entry.target.matches(l.section));
+          if (!link) return;
+          const navItem = document.getElementById(link.id);
+          if (!navItem) return;
+
+          if (entry.isIntersecting) {
+            document
+              .querySelectorAll(".header__link-item")
+              .forEach((el) => el.classList.remove("active"));
+            navItem.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    links.forEach(({ section }) => {
+      const el = document.querySelector(section);
+      if (el) observer.observe(el);
+    });
+  });
+</script>
