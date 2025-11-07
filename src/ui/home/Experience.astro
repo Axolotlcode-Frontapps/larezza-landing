@@ -47,3 +47,31 @@ const missionData = [
         @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4;
     }
 </style>
+
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.experience__cards > *');
+
+    items.forEach((item) => {
+      (item as HTMLElement).style.opacity = '0';
+    });
+
+    items.forEach((item, index) => {
+      const itemObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry) return;
+          const isVisible = entry.isIntersecting;
+          if (isVisible) {
+            setTimeout(() => {
+              item.classList.add('fadeIn');
+            }, index * 180);
+            itemObserver.unobserve(item);
+          }
+        },
+        { threshold: 0 }
+      );
+      itemObserver.observe(item);
+    });
+  });
+</script>

@@ -23,10 +23,40 @@
   }
 
   .hero__title{
-    @apply text-center text-3xl md:text-left sm:text-2xl md:text-3xl lg:text-[42px] xl:text-[50px] 2xl:text-[61px] text-primary font-medium sm:font-semibold mb-3 md:mb-2;
+    @apply text-center text-3xl md:text-left sm:text-2xl md:text-3xl lg:text-[42px] xl:text-[50px] 2xl:text-[61px] text-primary mb-3 md:mb-2;
   }
 
   .hero__text{
     @apply text-center text-xl md:text-left sm:text-xl md:text-base lg:text-xl xl:text-2xl 2xl:text-3xl text-primary;
   }
 </style>
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const hero = document.querySelector('.hero');
+    const title = document.querySelector('.hero__information');
+
+    (title as HTMLElement).style.opacity = '0';
+    (hero as HTMLElement).style.opacity = '0';
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && hero ? hero.classList.add('fadeIn') : null;
+      },
+      { threshold: 0 }
+    );
+    hero ? observer.observe(hero) : null;
+
+    const infoObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && title ? title.classList.add('fadeInFromLeft') : null;
+      },
+      { threshold: 0 }
+    );
+    title ? infoObserver.observe(title) : null;
+  });
+</script>

@@ -355,3 +355,26 @@
         });
     });
 </script>
+
+
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const info = document.querySelector('.schedule');
+
+    (info as HTMLElement).style.opacity = '0';
+
+    const infoObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && info
+          ? info.classList.add('fadeIn')
+          : null;
+      },
+      { threshold: 0 }
+    );
+    info && infoObserver.observe(info);
+
+  });
+</script>

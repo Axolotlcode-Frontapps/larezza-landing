@@ -9,7 +9,7 @@ const links = [
 ];
 ---
 
-<section class="header section">
+<section class="header section" id="header">
   <div class="header__container section__container">
     <Image src={Logo} alt="Larezza" class="h-[50px] md:h-[66px]" />
 
@@ -31,35 +31,35 @@ const links = [
     </div>
   </div>
 </section>
+<div class="h-[82px] md:hidden"/>
 
 <style>
   @reference "@/styles/app.css";
 
   .header {
-    @apply w-full bg-[#FFFFFF]/10 backdrop-blur-sm fixed border border-white z-100;
+    @apply w-full md:h-fit fixed border border-white z-100 bg-[#FFFFFF]/80 md:bg-[#FFFFFF]/10 backdrop-blur-sm transition-all duration-300 ease-in-out;
+  }
+  .header.open {
+    @apply bg-white ;
   }
   .header__container {
     @apply w-full flex justify-between items-center py-4;
   }
-
   .menu {
-    @apply absolute top-[100%] left-0 md:right-0 w-full md:w-fit bg-white flex-col items-center py-6 transition-all duration-300 ease-in-out md:static md:bg-transparent md:py-0 md:flex-row;
+    @apply absolute top-[100%] left-0 md:right-0 w-full h-[90dvh] md:h-fit md:w-fit bg-white flex-col justify-center items-center py-6 transition-all duration-300 ease-in-out md:static md:bg-transparent md:py-0 md:flex-row;
   }
   .menu.open {
     @apply flex;
   }
-
   .header__link-item {
     @apply text-primary-foreground text-2xl font-montserrat hover:cursor-pointer hover:mb-2 transition-all duration-200 ease-in-out;
   }
   .header__link-item.active {
     @apply border-b-2 border-b-primary-foreground;
   }
-
   .header__button {
     @apply text-white text-2xl px-3 py-2 2xl:py-3 2xl:px-[30px] bg-primary-foreground rounded-full font-montserrat;
   }
-
   .burguer {
     @apply flex flex-col items-center gap-[5px] md:hidden;
     & span {
@@ -81,19 +81,31 @@ const links = [
   addEventListener("DOMContentLoaded", () => {
     const burgerBtn = document.getElementById("burgerBtn");
     const menu = document.getElementById("menu");
+    const header = document.getElementById("header");
     const navItems = document.querySelectorAll(".nav-item");
 
-    if (burgerBtn && menu) {
+    if (burgerBtn && menu && header) {
       burgerBtn.addEventListener("click", () => {
         const isOpen = burgerBtn.getAttribute("data-open") === "true";
+        const body = document.body;
+
         burgerBtn.setAttribute("data-open", String(!isOpen));
         menu.classList.toggle("open", !isOpen);
+        header.classList.toggle("open", !isOpen);
+
+        if (!isOpen) {
+          body.style.overflow = "hidden";
+        } else {
+          body.style.overflow = "";
+        }
       });
 
       navItems.forEach((item) => {
         item.addEventListener("click", () => {
           burgerBtn.setAttribute("data-open", "false");
           menu.classList.remove("open");
+          header.classList.remove("open");
+          document.body.style.overflow = "";
         });
       });
     }
@@ -127,5 +139,24 @@ const links = [
       const el = document.querySelector(section);
       if (el) observer.observe(el);
     });
+  });
+</script>
+
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const headerAnim = document.querySelector('.header');
+
+    (headerAnim as HTMLElement).style.opacity = '0';
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && headerAnim ? headerAnim.classList.add('fadeIn') : null;
+      },
+      { threshold: 0 }
+    );
+    headerAnim ? observer.observe(headerAnim) : null;
   });
 </script>

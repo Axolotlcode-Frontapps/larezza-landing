@@ -51,3 +51,41 @@ import Image from "../../assets/images/essence.svg";
     @apply flex justify-center md:justify-end;
   }
 </style>
+
+
+<script>
+  addEventListener('DOMContentLoaded', () => {
+    const info = document.querySelector('.essence__information');
+    const image = document.querySelector('.essence__image');
+
+    (info as HTMLElement).style.opacity = '0';
+    (image as HTMLElement).style.opacity = '0';
+
+    const infoObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && info
+          ? info.classList.add('fadeInFromLeft')
+          : null;
+      },
+      { threshold: 0 }
+    );
+    info && infoObserver.observe(info);
+
+    const imageObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && image
+          ? image.classList.add('fadeInFromRight')
+          : null;
+      },
+      { threshold: 0 }
+    );
+    image && imageObserver.observe(image);
+
+
+  });
+</script>
+
