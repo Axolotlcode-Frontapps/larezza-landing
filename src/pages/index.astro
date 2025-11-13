@@ -6,9 +6,11 @@ import Hero from "@/ui/home/Hero.astro";
 import Massages from "@/ui/home/Massages.astro";
 import Schedules from "@/ui/home/Schedule.astro";
 import Services from "@/ui/home/Services.astro";
+import {AlertDialogDemo} from "@/ui/home/Modal";
 ---
 
 <Layout>
+  <AlertDialogDemo client:load />
   <Hero />
   <Experience />
   <Essence />
