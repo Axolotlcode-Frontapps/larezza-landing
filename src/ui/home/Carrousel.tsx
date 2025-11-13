@@ -16,24 +16,22 @@ const images = [Image1, Image2, Image3, Image4, Image5];
 
 export function Carrousel() {
   return (
-    <div>
-      <Carousel opts={{ align: "start", loop: true }}>
-        <CarouselContent>
-          {images.map((img, index) => (
-            <CarouselItem key={index}>
-              <div className="h-auto mx-auto flex justify-center">
-                <img
-                  src={img.src}
-                  alt={`Slide ${index + 1}`}
-                  className="md:h-100 lg:h-150"
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="p-5 md:p-6 bg-primary">Prev</CarouselPrevious>
-        <CarouselNext className="p-5 md:p-6 bg-primary">Next</CarouselNext>
-      </Carousel>
-    </div>
+  <Carousel opts={{ align: "start", loop: true }}>
+    <CarouselContent>
+      {images.map((img, index) => (
+        <CarouselItem key={index}>
+          <div className="h-auto mx-auto flex justify-center">
+            <img
+            src={img.src}
+            alt={`Slide ${index + 1}`}
+            className="md:h-100 lg:h-150"
+            />
+          </div>
+        </CarouselItem>
+      ))}
+    </CarouselContent>
+    <CarouselPrevious className="p-5 md:p-6 bg-primary">Prev</CarouselPrevious>
+    <CarouselNext className="p-5 md:p-6 bg-primary">Next</CarouselNext>
+  </Carousel>
   )
 }
