@@ -15,7 +15,7 @@ import { X } from "lucide-react"
 export function AlertDialogDemo() {
   return (
     <AlertDialog defaultOpen={true}>
-      <AlertDialogContent className="max-w-2xs md:max-w-lg lg:max-w-2xl">
+      <AlertDialogContent className="fixed z-300 max-w-2xs md:max-w-lg lg:max-w-2xl">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-4xl font-bold text-right mt-4">
             <AlertDialogCancel className="text-base text-white bg-primary md:p-5"> <X /> </AlertDialogCancel>

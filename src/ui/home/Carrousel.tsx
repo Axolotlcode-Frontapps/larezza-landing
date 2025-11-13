@@ -17,15 +17,15 @@ const images = [Image1, Image2, Image3, Image4, Image5];
 export function Carrousel() {
   return (
     <div>
-      <Carousel opts={{ align: "start" }}>
+      <Carousel opts={{ align: "start", loop: true }}>
         <CarouselContent>
           {images.map((img, index) => (
             <CarouselItem key={index}>
-              <div className="h-auto place-items-center">
+              <div className="h-auto mx-auto flex justify-center">
                 <img
                   src={img.src}
                   alt={`Slide ${index + 1}`}
-                  className=" md:h-100 lg:h-150"
+                  className="md:h-100 lg:h-150"
                 />
               </div>
             </CarouselItem>
