@@ -1,23 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Img1 from "../../assets/images/service.png";
-
-import { CardServices } from "../shared/services-cards";
-
-const missionData = [
-    {
-        title: "Facial de hidratación",
-        text1: "* Hidrata, nutre, suaviza, ilumina y revitaliza.",
-        text2: "* Restaura la humedad natural mejorando su suavidad, elasticidad y brillo.",
-        text3: "* Ideal para piel seca o deshidratada.",
-    },
-    {
-        title: "Facial limpieza profunda",
-        text1: "* Limpia, purifica, equilibra, renueva y desintoxica.",
-        text2: "* Elimina impurezas, puntos negros y exceso de grasa.",
-        text3: "* Deja la piel limpia y equilibrada.",
-    },
-];
+import { ServicesCarrousel } from "@/ui/home/CarrouselServices";
 ---
 
 <section class="section services" id="Services">
@@ -35,7 +19,7 @@ const missionData = [
                 En Larezza no solo cuidamos tu piel, cuidamos de ti.
             </p>
             <div class="services__cards">
-                {missionData.map((card) => <CardServices {...card} />)}
+                <ServicesCarrousel/>
             </div>
         </div>
     </div>
@@ -66,11 +50,11 @@ const missionData = [
     }
 
     .services__text {
-        @apply text-xl lg:text-2xl text-primary mb-6 md:mb-0 lg:mb-6;
+        @apply text-xl lg:text-2xl text-primary mb-0;
     }
 
     .services__cards {
-        @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
+        @apply grid grid-cols-1 gap-4;
     }
 </style>
 
