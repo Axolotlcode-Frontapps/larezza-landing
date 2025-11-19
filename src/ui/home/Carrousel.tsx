@@ -12,18 +12,40 @@ import Image3 from '@/assets/images/3.png'
 import Image4 from '@/assets/images/4.png'
 import Image5 from '@/assets/images/5.png'
 
-const images = [Image1, Image2, Image3, Image4, Image5];
+const images = [
+  {
+    id: crypto.randomUUID(), 
+    src: Image1
+  },
+  {
+    id: crypto.randomUUID(), 
+    src: Image2,
+  },
+  {
+    id: crypto.randomUUID(), 
+    src: Image3,
+  },
+  {
+    id: crypto.randomUUID(), 
+    src: Image4,
+  },
+  {
+    id: crypto.randomUUID(), 
+    src: Image5,
+  },
+];
 
 export function Carrousel() {
+  console.log('Array de imágenes:', images);
   return (
   <Carousel opts={{ align: "start", loop: true }}>
     <CarouselContent>
-      {images.map((img, index) => (
-        <CarouselItem key={index}>
+      {images.map(img => (
+        <CarouselItem key={img.id}>
           <div className="h-auto mx-auto flex justify-center">
             <img
             src={img.src}
-            alt={`Slide ${index + 1}`}
+            alt={`Slide ${img.id + 1}`}
             className="md:h-100 lg:h-150"
             />
           </div>
