@@ -4,8 +4,8 @@ import Logo from "../../assets/images/logo-header.svg";
 
 const links = [
   { title: "Inicio", href: "#Hero", section: ".hero" },
-  { title: "Servicios", href: "#Services", section: ".services" },
   { title: "Nosotros", href: "#AboutUs", section: ".about-us" },
+  { title: "Servicios", href: "#Services", section: ".services" },
 ];
 ---
 
@@ -20,18 +20,30 @@ const links = [
     </button>
 
     <div id="menu" class="menu hidden md:flex gap-5 2xl:gap-[100px]">
-      <nav class="header__links flex flex-col md:flex-row items-center gap-5 md:gap-10">
-        {links.map(({ title, href }) => (
-          <a href={href} class="header__link-item nav-item" id={`${title}-id`}>
-            {title}
-          </a>
-        ))}
+      <nav
+        class="header__links flex flex-col md:flex-row items-center gap-5 md:gap-10"
+      >
+        {
+          links.map(({ title, href }) => (
+            <a
+              href={href}
+              class="header__link-item nav-item"
+              id={`${title}-id`}
+            >
+              {title}
+            </a>
+          ))
+        }
       </nav>
-      <a href="#Contacto" class="header__button mt-4 md:mt-0 nav-item">Agendar tu cita</a>
+      <a
+        href="https://wa.link/dc586b"
+        target="_blank"
+        class="header__button mt-4 md:mt-0 nav-item">Agendar tu cita</a
+      >
     </div>
   </div>
 </section>
-<div class="h-[82px] md:hidden"/>
+<div class="h-[82px] md:hidden"></div>
 
 <style>
   @reference "@/styles/app.css";
@@ -40,7 +52,7 @@ const links = [
     @apply w-full md:h-fit fixed border border-white z-1 bg-[#FFFFFF]/80 md:bg-[#FFFFFF]/10 backdrop-blur-sm transition-all duration-300 ease-in-out;
   }
   .header.open {
-    @apply bg-white ;
+    @apply bg-white;
   }
   .header__container {
     @apply w-full flex justify-between items-center py-4;
@@ -132,7 +144,7 @@ const links = [
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
 
     links.forEach(({ section }) => {
@@ -142,20 +154,19 @@ const links = [
   });
 </script>
 
-
 <script>
-  addEventListener('DOMContentLoaded', () => {
-    const headerAnim = document.querySelector('.header');
+  addEventListener("DOMContentLoaded", () => {
+    const headerAnim = document.querySelector(".header");
 
-    (headerAnim as HTMLElement).style.opacity = '0';
+    (headerAnim as HTMLElement).style.opacity = "0";
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry) return;
         const isVisible = entry.isIntersecting;
-        isVisible && headerAnim ? headerAnim.classList.add('fadeIn') : null;
+        isVisible && headerAnim ? headerAnim.classList.add("fadeIn") : null;
       },
-      { threshold: 0 }
+      { threshold: 0 },
     );
     headerAnim ? observer.observe(headerAnim) : null;
   });

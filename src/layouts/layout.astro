@@ -5,7 +5,9 @@ import { config } from "@/lib/config";
 import Footer from "@/ui/shared/footer.astro";
 import Header from "@/ui/shared/header.astro";
 
-import '@fontsource-variable/montserrat';
+import "@fontsource-variable/montserrat";
+
+import Wa from "@/ui/shared/wa.astro";
 
 interface Props {
   title?: string;
@@ -26,17 +28,18 @@ const { title = "Inicio", description = config.description } = Astro.props;
     <title>{title} | {config.brand}</title>
   </head>
   <body>
-    <Header /> 
+    <Header />
     <main>
       <slot />
     </main>
     <Footer />
+    <Wa />
   </body>
 </html>
 
 <style>
   body {
-    font-family: 'Bacasime Antique', serif;
+    font-family: "Bacasime Antique", serif;
   }
   main {
     @apply overflow-hidden;
