@@ -25,7 +25,9 @@ export function CardServices({ title, text1, text2, text3 }: Props) {
 
 				<CardFooter className='p-0 mt-auto'>
 					<a
-						href='#More'
+						href='https://wa.link/dc586b'
+						target='_blank'
+						rel='noopener noreferrer'
 						className='w-full lg:w-auto block mt-auto text-lg px-4 py-3 border-1 border-primary rounded-lg hover:bg-primary-foreground hover:text-white transition-colors duration-300 ease-in-out'
 					>
 						Saber más...
