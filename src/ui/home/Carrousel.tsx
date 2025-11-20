@@ -1,3 +1,5 @@
+import Autoplay from "embla-carousel-autoplay";
+
 import Image1 from "@/assets/images/1.png";
 import Image2 from "@/assets/images/2.png";
 import Image3 from "@/assets/images/3.png";
@@ -15,8 +17,15 @@ const images = [Image1, Image2, Image3, Image4, Image5];
 
 export function Carrousel() {
 	return (
-		<Carousel opts={{ align: "start", loop: true }}>
-			<CarouselContent>
+		<Carousel
+			opts={{ align: "start", loop: true }}
+			plugins={[
+				Autoplay({
+					delay: 5000,
+				}),
+			]}
+		>
+			<CarouselContent className='p-0'>
 				{images.map((img, index) => (
 					<CarouselItem
 						key={`carousel-item-${
@@ -24,20 +33,20 @@ export function Carrousel() {
 							index
 						}`}
 					>
-						<div className='h-auto mx-auto flex justify-center'>
+						<div className='h-auto flex justify-center rounded-lg overflow-hidden'>
 							<img
 								src={img.src}
 								alt={`Slide ${index + 1}`}
-								className='md:h-100 lg:h-150'
+								className='md:h-100 lg:h-150 w-full'
 							/>
 						</div>
 					</CarouselItem>
 				))}
 			</CarouselContent>
-			<CarouselPrevious className='p-5 md:p-6 bg-primary'>
+			{/* <CarouselPrevious className='p-5 md:p-6 bg-primary'>
 				Prev
 			</CarouselPrevious>
-			<CarouselNext className='p-5 md:p-6 bg-primary'>Next</CarouselNext>
+			<CarouselNext className='p-5 md:p-6 bg-primary'>Next</CarouselNext> */}
 		</Carousel>
 	);
 }

@@ -1,12 +1,6 @@
-import * as React from "react";
-import { Card, CardContent } from "@/ui/shared/card";
-import {
-	Carousel,
-	CarouselContent,
-	CarouselItem,
-	CarouselNext,
-	CarouselPrevious,
-} from "@/ui/shared/carousel";
+import Autoplay from "embla-carousel-autoplay";
+
+import { Carousel, CarouselContent, CarouselItem } from "@/ui/shared/carousel";
 import { CardServices } from "@/ui/shared/services-cards/services-cards";
 
 const missionData = [
@@ -94,7 +88,15 @@ const missionData = [
 
 export function ServicesCarrousel() {
 	return (
-		<Carousel className='h-full' opts={{ align: "start", loop: true }}>
+		<Carousel
+			className='h-full'
+			opts={{ align: "start", loop: true }}
+			plugins={[
+				Autoplay({
+					delay: 5000,
+				}),
+			]}
+		>
 			<CarouselContent className='p-1'>
 				{missionData.map((service) => (
 					<CarouselItem
