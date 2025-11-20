@@ -1,25 +1,37 @@
 import * as React from "react";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../card";
 
 interface Props {
-  title: string;
-  text1: string;
-  text2: string;
-  text3: string;
+	title: string;
+	text1: string;
+	text2: string;
+	text3: string;
 }
 
 export function CardServices({ title, text1, text2, text3 }: Props) {
-  return (
-    <article className="service">
-      <div className="flex flex-col p-2 h-70 md:h-60 lg:h-80 xl:h-90 text-primary relative">
-        <div className="bg-primary-foreground p-7 absolute rounded-full bottom-63 md:bottom-53 lg:bottom-73 xl:bottom-83 left-50 md:left-58 lg:left-45  xl:left-48"></div>
-        <h1 className="font-bold text-2xl mb-5 mt-6">{title}</h1>
-        <ul className="text-lg flex-grow mb-10">
-          <li className="mb-2">{text1}</li>
-          <li className="mb-2">{text2}</li>
-          <li>{text3}</li>
-        </ul>
-        <a href="#More" className=" absolute text-lg p-4 px-18 lg:px-10 border-1 border-primary rounded-lg top-78 md:top-70 lg:top-90 xl:top-90 hover:bg-primary-foreground hover:text-white">Saber más...</a>
-      </div>
-    </article>
-  );
+	return (
+		<Card className='border-primary h-full'>
+			<CardContent className='relative h-full flex flex-col'>
+				<CardHeader className='px-0 relative z-20'>
+					<CardTitle className='text-2xl font-bold'>{title}</CardTitle>
+				</CardHeader>
+				<div className='bg-primary-foreground p-7 absolute rounded-full -top-5 right-1'></div>
+
+				<ul className='text-lg mb-10'>
+					<li className='mb-2'>{text1}</li>
+					<li className='mb-2'>{text2}</li>
+					<li>{text3}</li>
+				</ul>
+
+				<CardFooter className='p-0 mt-auto'>
+					<a
+						href='#More'
+						className='w-full lg:w-auto block mt-auto text-lg px-4 py-3 border-1 border-primary rounded-lg hover:bg-primary-foreground hover:text-white transition-colors duration-300 ease-in-out'
+					>
+						Saber más...
+					</a>
+				</CardFooter>
+			</CardContent>
+		</Card>
+	);
 }

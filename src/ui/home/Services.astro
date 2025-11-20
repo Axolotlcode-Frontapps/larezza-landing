@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import Img1 from "../../assets/images/service.png";
 import { ServicesCarrousel } from "@/ui/home/CarrouselServices";
+import Img1 from "../../assets/images/service.png";
 ---
 
 <section class="section services" id="Services">
@@ -19,7 +19,7 @@ import { ServicesCarrousel } from "@/ui/home/CarrouselServices";
                 En Larezza no solo cuidamos tu piel, cuidamos de ti.
             </p>
             <div class="services__cards">
-                <ServicesCarrousel client:load/>
+                <ServicesCarrousel client:load />
             </div>
         </div>
     </div>
@@ -58,39 +58,32 @@ import { ServicesCarrousel } from "@/ui/home/CarrouselServices";
     }
 </style>
 
-
 <script>
-  addEventListener('DOMContentLoaded', () => {
-    const info = document.querySelector('.services__information');
-    const image = document.querySelector('.services__image');
+    addEventListener("DOMContentLoaded", () => {
+        const info = document.querySelector(".services__information");
+        const image = document.querySelector(".services__image");
 
-    (info as HTMLElement).style.opacity = '0';
-    (image as HTMLElement).style.opacity = '0';
+        (info as HTMLElement).style.opacity = "0";
+        (image as HTMLElement).style.opacity = "0";
 
-    const infoObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry) return;
-        const isVisible = entry.isIntersecting;
-        isVisible && info
-          ? info.classList.add('fadeIn')
-          : null;
-      },
-      { threshold: 0 }
-    );
-    info && infoObserver.observe(info);
+        const infoObserver = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry) return;
+                const isVisible = entry.isIntersecting;
+                isVisible && info ? info.classList.add("fadeIn") : null;
+            },
+            { threshold: 0 },
+        );
+        info && infoObserver.observe(info);
 
-    const imageObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry) return;
-        const isVisible = entry.isIntersecting;
-        isVisible && image
-          ? image.classList.add('fadeIn')
-          : null;
-      },
-      { threshold: 0 }
-    );
-    image && imageObserver.observe(image);
-
-
-  });
+        const imageObserver = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry) return;
+                const isVisible = entry.isIntersecting;
+                isVisible && image ? image.classList.add("fadeIn") : null;
+            },
+            { threshold: 0 },
+        );
+        image && imageObserver.observe(image);
+    });
 </script>
