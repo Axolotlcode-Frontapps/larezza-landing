@@ -99,7 +99,7 @@ export function ServicesCarrousel() {
 				{missionData.map((service) => (
 					<CarouselItem
 						key={service.id}
-						className=' sm:basis-1/2 md:basis-full lg:basis-1/2 xl:basis-1/3'
+						className=' sm:basis-1/2 md:basis-full lg:basis-1/2'
 					>
 						<CardServices
 							title={service.title}
