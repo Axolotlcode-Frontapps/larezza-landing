@@ -1,22 +1,27 @@
 ---
 import Layout from "@/layouts/layout.astro";
+import Apparatus from "@/ui/home/Apparatus.astro";
 import Essence from "@/ui/home/Essence.astro";
 import Experience from "@/ui/home/Experience.astro";
+import Facials from "@/ui/home/Facials.astro";
+import HairRemoval from "@/ui/home/Hair-removal.astro";
 import Hero from "@/ui/home/Hero.astro";
 import Massages from "@/ui/home/Massages.astro";
-import { AlertDialogDemo } from "@/ui/home/Modal";
 import Schedules from "@/ui/home/Schedule.astro";
 import Services from "@/ui/home/Services.astro";
 // import { Carrousel } from "@/ui/home//CarrouselServices";
 ---
 
 <Layout>
-  <AlertDialogDemo client:load />
+  <!-- <AlertDialogDemo client:load /> -->
   <Hero />
   <Experience />
   <Essence />
   <Services />
   <Massages />
+  <Facials />
+  <HairRemoval />
+  <Apparatus />
   <Schedules />
   <!-- <Carrousel /> -->
 </Layout>

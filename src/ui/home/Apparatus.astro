@@ -1,0 +1,132 @@
+---
+import { Image } from "astro:assets";
+import Img from "@/assets/images/apparatus.png";
+import { ScrollArea } from "@/ui/shared/scroll-area";
+import { CardService } from "../shared/service-cards";
+
+const data = [
+  {
+    title: "EMS (Electroestimulación Muscular)",
+    items: [
+      "Contracciones profundas que tonifican sin esfuerzo físico.",
+      "Fortalece y define músculos.",
+    ],
+  },
+  {
+    title: "Cavitación",
+    items: [
+      "Reduce grasa localizada con ondas ultrasónicas.",
+      "Favorece la remodelación sin cirugía.",
+    ],
+  },
+  {
+    title: "Vacuum (Vacumterapia)",
+    items: [
+      "Succión controlada que mejora circulación y drenaje linfático.",
+      "Reduce celulitis y retención de líquidos.",
+    ],
+  },
+  {
+    title: "Radiofrecuencia",
+    items: [
+      "Estimula colágeno y elastina.",
+      "Reafirma y mejora la textura del rostro y cuerpo.",
+    ],
+  },
+  {
+    title: "Criolipólisis",
+    items: [
+      "Congela y elimina grasa localizada.",
+      "Modela la figura de forma progresiva y no invasiva.",
+    ],
+  },
+  {
+    title: "Lipoláser",
+    items: [
+      "Láser de baja intensidad que libera grasa acumulada.",
+      "Potencia los resultados reductivos.",
+    ],
+  },
+];
+---
+
+<section class="section apparatus" id="More">
+  <div class="section__container apparatus__container">
+    <div class="apparatus__information">
+      <h1 class="apparatus__title">Aparatología Corporal</h1>
+      <p class="apparatus__text">
+        Moldea tu figura sin cirugía, reduce volumen y consigue firmeza con
+        resultados naturales duraderos.
+      </p>
+      <ScrollArea className="h-[580px] px-3 lg:px-0" client:visible>
+        <div class="apparatus__cards">
+          {data.map((card) => <CardService {...card} />)}
+        </div>
+      </ScrollArea>
+    </div>
+
+    <Image src={Img} alt="statistics" class="apparatus__image" />
+  </div>
+</section>
+
+<style>
+  @reference "@/styles/app.css";
+
+  .apparatus {
+    @apply bg-gradient-to-t from-white via-foreground to-white;
+  }
+
+  .apparatus__container {
+    @apply flex flex-col lg:flex-row-reverse sm:justify-between gap-8 xl:gap-40 py-10;
+  }
+
+  .apparatus__information {
+    @apply w-full max-h-[824px] overflow-hidden;
+  }
+
+  .apparatus__title {
+    @apply text-center lg:text-left text-3xl md:text-6xl text-primary font-medium mb-3;
+  }
+
+  .apparatus__text {
+    @apply text-center lg:text-left text-xl md:text-2xl text-primary mb-3;
+  }
+
+  .apparatus__cards {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 pt-3;
+  }
+
+  .apparatus__image {
+    @apply w-full h-full mx-auto max-w-[670px] min-h-[824px] max-h-[824px] my-auto lg:mt-auto lg:mb-0 object-contain;
+  }
+</style>
+
+<script>
+  addEventListener("DOMContentLoaded", () => {
+    const info = document.querySelector(".apparatus__information");
+    const image = document.querySelector(".apparatus__image");
+
+    (info as HTMLElement).style.opacity = "0";
+    (image as HTMLElement).style.opacity = "0";
+
+    const infoObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && info ? info.classList.add("fadeInFromLeft") : null;
+      },
+      { threshold: 0 },
+    );
+    info && infoObserver.observe(info);
+
+    const imageObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && image ? image.classList.add("fadeInFromRight") : null;
+      },
+      { threshold: 0 },
+    );
+    image && imageObserver.observe(image);
+  });
+</script>

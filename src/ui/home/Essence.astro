@@ -24,7 +24,7 @@ import Image from "../../assets/images/essence.svg";
   @reference "@/styles/app.css";
 
   .essence {
-    @apply bg-gradient-to-t from-foreground to-white;
+    @apply bg-gradient-to-t from-white via-foreground to-white;
   }
 
   .essence__container {
@@ -52,24 +52,21 @@ import Image from "../../assets/images/essence.svg";
   }
 </style>
 
-
 <script>
-  addEventListener('DOMContentLoaded', () => {
-    const info = document.querySelector('.essence__information');
-    const image = document.querySelector('.essence__image');
+  addEventListener("DOMContentLoaded", () => {
+    const info = document.querySelector(".essence__information");
+    const image = document.querySelector(".essence__image");
 
-    (info as HTMLElement).style.opacity = '0';
-    (image as HTMLElement).style.opacity = '0';
+    (info as HTMLElement).style.opacity = "0";
+    (image as HTMLElement).style.opacity = "0";
 
     const infoObserver = new IntersectionObserver(
       ([entry]) => {
         if (!entry) return;
         const isVisible = entry.isIntersecting;
-        isVisible && info
-          ? info.classList.add('fadeInFromLeft')
-          : null;
+        isVisible && info ? info.classList.add("fadeInFromLeft") : null;
       },
-      { threshold: 0 }
+      { threshold: 0 },
     );
     info && infoObserver.observe(info);
 
@@ -77,15 +74,10 @@ import Image from "../../assets/images/essence.svg";
       ([entry]) => {
         if (!entry) return;
         const isVisible = entry.isIntersecting;
-        isVisible && image
-          ? image.classList.add('fadeInFromLeft')
-          : null;
+        isVisible && image ? image.classList.add("fadeInFromLeft") : null;
       },
-      { threshold: 0 }
+      { threshold: 0 },
     );
     image && imageObserver.observe(image);
-
-
   });
 </script>
-

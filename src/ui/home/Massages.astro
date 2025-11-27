@@ -1,25 +1,49 @@
 ---
-import { Image } from 'astro:assets';
-import Img from "../../assets/images/massages.png";
-
-import { CardMassages } from "../shared/massage-cards";
+import { Image } from "astro:assets";
+import Img from "@/assets/images/massages.png";
+import { ScrollArea } from "@/ui/shared/scroll-area";
+import { CardService } from "@/ui/shared/service-cards";
 
 const missionData = [
     {
         title: "Masaje relajante",
-        text: "Reduce el estrés, mejora el descanso y promueve una sensación profunda de bienestar. Ideal para reconectar contigo después de una semana intensa.",
+        items: [
+            "Reduce el estrés y libera tensión acumulada.",
+            "Mejora el descanso y la calidad del sueño.",
+            "Brinda bienestar profundo y reconexión contigo.",
+        ],
     },
     {
         title: "Masaje descontracturante",
-        text: "Técnica terapéutica que libera tensiones musculares profundas en espalda, cuello y hombros. Recupera la movilidad y alivia el dolor acumulado.",
+        items: [
+            "Libera tensiones musculares profundas en espalda, cuello y hombros.",
+            "Alivia dolor y rigidez acumulada.",
+            "Recupera movilidad y sensación de ligereza.",
+        ],
     },
     {
         title: "Drenaje linfático",
-        text: "Estimula la circulación, favorece la eliminación de líquidos retenidos y ayuda a desintoxicar el organismo de manera suave y natural.",
+        items: [
+            "Estimula la circulación y el sistema linfático.",
+            "Reduce líquidos retenidos y desinflama.",
+            "Recupera movilidad y sensación de ligereza.",
+        ],
     },
     {
         title: "Masaje reductivo",
-        text: "Activa, tonifica y moldea la silueta mediante movimientos firmes que ayudan a movilizar grasa localizada y mejorar la apariencia corporal.",
+        items: [
+            "Reduce el estrés y libera tensión acumulada.",
+            "Ayuda a movilizar grasa localizada.",
+            "Mejora la apariencia y firmeza corporal.",
+        ],
+    },
+    {
+        title: "Maderoterapia Reductiva ",
+        items: [
+            "Estimula circulación y sistema linfático para moldear la silueta.  ",
+            "Reduce medidas, toxinas y mejora la textura de la piel. ",
+            "Relaja profundamente mientras tonifica y reafirma. ",
+        ],
     },
 ];
 ---
@@ -28,76 +52,84 @@ const missionData = [
     <div class="section__container massages__container">
         <div class="massages__information">
             <h1 class="massages__title">Masajes</h1>
-            <p class="massages__text">Relájate, respira y deja que nuestras manos expertas restauren tu energía y armonía interior.</p>
-            <div class="massages__cards">
-                 {missionData.map((card) => <CardMassages {...card} />)}
-            </div>
+            <p class="massages__text">
+                Relájate, respira y deja que nuestras manos expertas restauren
+                tu energía y armonía interior.
+            </p>
+            <ScrollArea
+                className="h-[824px] px-3 lg:px-0 overflow-hidden"
+                client:visible
+            >
+                <div class="massages__cards">
+                    {missionData.map((card) => <CardService {...card} />)}
+                </div>
+            </ScrollArea>
         </div>
-        <div class="massages__image"><Image src={Img} alt="statistics" class="h-100 w-80 lg:h-160 lg:w-130 xl:h-180 xl:w-150" /></div> 
+
+        <Image src={Img} alt="statistics" class="massages__image" />
     </div>
 </section>
 
 <style>
-@reference "@/styles/app.css";
+    @reference "@/styles/app.css";
 
-.massages{
-    @apply bg-gradient-to-b from-foreground to-white;
-}
+    .massages {
+        @apply bg-gradient-to-t from-white via-foreground to-white;
+    }
 
-.massages__container{
-    @apply grid grid-cols-1 lg:grid-cols-2 py-10 gap-8 xl:gap-10;
-}
+    .massages__container {
+        @apply flex flex-col lg:flex-row sm:justify-between gap-8 xl:gap-40 py-10;
+    }
 
-.massages__title{
-    @apply text-center lg:text-left text-3xl md:text-6xl text-primary font-medium mb-3;
-}
+    .massages__information {
+        @apply w-full;
+    }
 
-.massages__text{
-    @apply text-center lg:text-left text-xl md:text-2xl text-primary mb-6;
-}
+    .massages__title {
+        @apply text-center lg:text-left text-3xl md:text-6xl text-primary font-medium mb-3;
+    }
 
-.massages__cards{
-    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4;
-}
+    .massages__text {
+        @apply text-center lg:text-left text-xl md:text-2xl text-primary mb-3;
+    }
 
-.massages__image{
-    @apply flex place-items-center justify-center;
-}
+    .massages__cards {
+        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 pt-3;
+    }
+
+    .massages__image {
+        @apply w-full h-full mx-auto max-w-[670px] min-h-[824px] max-h-[824px] my-auto lg:mt-auto lg:mb-0 object-contain;
+    }
 </style>
 
-
 <script>
-  addEventListener('DOMContentLoaded', () => {
-    const info = document.querySelector('.massages__information');
-    const image = document.querySelector('.massages__image');
+    addEventListener("DOMContentLoaded", () => {
+        const info = document.querySelector(".massages__information");
+        const image = document.querySelector(".massages__image");
 
-    (info as HTMLElement).style.opacity = '0';
-    (image as HTMLElement).style.opacity = '0';
+        (info as HTMLElement).style.opacity = "0";
+        (image as HTMLElement).style.opacity = "0";
 
-    const infoObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry) return;
-        const isVisible = entry.isIntersecting;
-        isVisible && info
-          ? info.classList.add('fadeInFromLeft')
-          : null;
-      },
-      { threshold: 0 }
-    );
-    info && infoObserver.observe(info);
+        const infoObserver = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry) return;
+                const isVisible = entry.isIntersecting;
+                isVisible && info ? info.classList.add("fadeInFromLeft") : null;
+            },
+            { threshold: 0 },
+        );
+        info && infoObserver.observe(info);
 
-    const imageObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry) return;
-        const isVisible = entry.isIntersecting;
-        isVisible && image
-          ? image.classList.add('fadeInFromRight')
-          : null;
-      },
-      { threshold: 0 }
-    );
-    image && imageObserver.observe(image);
-
-
-  });
+        const imageObserver = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry) return;
+                const isVisible = entry.isIntersecting;
+                isVisible && image
+                    ? image.classList.add("fadeInFromRight")
+                    : null;
+            },
+            { threshold: 0 },
+        );
+        image && imageObserver.observe(image);
+    });
 </script>

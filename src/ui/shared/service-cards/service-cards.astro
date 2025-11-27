@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string;
+  text?: string;
+  items: string[];
+}
+
+const { title, text, items = [] } = Astro.props;
+---
+
+<article class="service">
+  <div class="service__circle"></div>
+  <h1 class="service__title">{title}</h1>
+  <ul class="grid gap-3 mb-15">
+    {items.map((item) => <li class="service__text">• {item}</li>)}
+  </ul>
+  <a href="https://wa.link/dc586b" target="_blank" class="service__button">
+    Saber más...
+  </a>
+</article>
+
+<style>
+  @reference "@/styles/app.css";
+
+  .service {
+    @apply w-full flex flex-col overflow-hidden relative border-1 border-primary rounded-4xl px-4 sm:px-8 lg:px-4 xl:px-8 py-5 h-full transform transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-lg;
+  }
+
+  .service__circle {
+    @apply absolute bg-primary-foreground size-17.25 rounded-full -top-6.5 -right-6.5 -z-10;
+  }
+
+  .service__title {
+    @apply min-h-[4rem] text-lg lg:text-xl text-primary font-bold mb-12;
+  }
+
+  .service__text {
+    @apply text-base text-primary;
+  }
+
+  .service__button {
+    @apply inline-block mt-auto w-full text-lg self-end text-primary text-center border-1 border-primary py-3 rounded-lg cursor-pointer hover:bg-primary-foreground hover:text-white;
+  }
+</style>

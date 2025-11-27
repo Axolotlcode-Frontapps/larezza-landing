@@ -6,13 +6,8 @@ import Img1 from "../../assets/images/service.png";
 
 <section class="section services" id="Services">
     <div class="section__container services__container">
-        <div class="services__image">
-            <Image
-                src={Img1}
-                alt="statistics"
-                class="w-full h-auto max-h-[500px] max-w-[300px] mx-auto md:mx-0 md:max-h-none md:max-w-none"
-            />
-        </div>
+        <Image src={Img1} alt="statistics" class="services__image" />
+
         <div class="services__information">
             <h1 class="services__title">Nuestros Servicios:</h1>
             <p class="services__text">
@@ -29,16 +24,16 @@ import Img1 from "../../assets/images/service.png";
     @reference "@/styles/app.css";
 
     .services {
-        @apply bg-foreground bg-gradient-to-t to-foreground from-foreground;
+        @apply bg-gradient-to-t from-white via-foreground to-white;
     }
 
     .services__container {
-        @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_3fr] gap-10 py-10 place-items-center;
+        @apply grid grid-cols-1 md:grid-cols-2 gap-10 py-10 place-items-center relative;
         /* @apply bg-foreground bg-gradient-to-b to-white; */
     }
 
     .services__image {
-        @apply w-full place-content-center;
+        @apply w-full max-w-[604px] mx-auto place-content-center;
     }
 
     .services__information {
