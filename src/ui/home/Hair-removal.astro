@@ -8,9 +8,9 @@ const data = [
   {
     title: "Depilación Láser con Diodo",
     items: [
-      "Elimina el vello desde la raíz de forma segura y duradera.",
-      "Reduce grasa, acné y pigmentación irregular.",
-      "Deja la piel suave, sin irritación y apto para todo tipo de piel. ",
+      "Elimina el vello desde la raíz de forma segura y duradera ayudando a reducir el crecimiento progresivamente",
+      "Procedimiento seguro, eficaz y con resultados duraderos.",
+      "Apto para todo tipo de piel y para cualquier zona del cuerpo.",
     ],
   },
 ];
@@ -43,11 +43,11 @@ const data = [
   }
 
   .HairRemoval__container {
-    @apply flex flex-col lg:flex-row sm:justify-between gap-8 xl:gap-40 py-10;
+    @apply w-full grid grid-cols-1 md:grid-cols-2 sm:justify-between gap-8 xl:gap-40 py-10;
   }
 
   .HairRemoval__information {
-    @apply w-full max-h-[824px] overflow-hidden;
+    @apply w-full ;
   }
 
   .HairRemoval__title {
@@ -63,7 +63,7 @@ const data = [
   }
 
   .HairRemoval__image {
-    @apply w-full h-full mx-auto max-w-[670px] min-h-[824px] max-h-[824px] my-auto lg:mt-auto lg:mb-0 object-contain;
+    @apply w-full max-w-[500px] object-contain self-start;
   }
 </style>
 
@@ -89,7 +89,7 @@ const data = [
       ([entry]) => {
         if (!entry) return;
         const isVisible = entry.isIntersecting;
-        isVisible && image ? image.classList.add("fadeInFromRight") : null;
+        isVisible && image ? image.classList.add("fadeIn") : null;
       },
       { threshold: 0 },
     );

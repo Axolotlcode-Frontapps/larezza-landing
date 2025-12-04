@@ -104,6 +104,12 @@
 	.section__container {
 		@apply w-full max-w-screen-2xl mx-auto px-5 md:px-7 lg:px-[50px];
 	}
+	.mobile {
+    @apply grid md:hidden;
+  }
+  .desktop {
+    @apply hidden md:grid;
+  }
 }
 
 

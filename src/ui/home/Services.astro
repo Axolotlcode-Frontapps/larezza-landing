@@ -2,83 +2,106 @@
 import { Image } from "astro:assets";
 import { ServicesCarrousel } from "@/ui/home/CarrouselServices";
 import Img1 from "../../assets/images/service.png";
+
+const servicesData = [
+  {
+    title: "Masajes",
+    text: "Experiencias personalizadas que drenan, relajan y esculpen tu cuerpo con técnicas exclusivas, creando bienestar profundo y resultados visibles.",
+    link: "#massages",
+  },
+  {
+    title: "Faciales",
+    text: "Tratamientos faciales de estética avanzada que iluminan, unifican y renuevan la piel con precisión clínica, logrando un acabado radiante luminoso.",
+    link: "#facials",
+  },
+  {
+    title: "Depilación",
+    text: "Depilación láser con diodo de última generación que reduce progresivamente el vello, ofreciendo suavidad duradera, seguridad total y resultados elegantes.",
+    link: "#hair-removal",
+  },
+  {
+    title: "Aparatología Corporal",
+    text: "Tecnología corporal avanzada que redefine contornos sin cirugía mediante cavitación, radiofrecuencia, vacuum, EMS y criolipólisis, logrando firmeza visible natural progresiva.",
+    link: "#apparatus",
+  },
+];
 ---
 
 <section class="section services" id="Services">
-    <div class="section__container services__container">
-        <Image src={Img1} alt="statistics" class="services__image" />
+  <div class="section__container services__container">
+    <Image src={Img1} alt="statistics" class="services__image" />
 
-        <div class="services__information">
-            <h1 class="services__title">Nuestros Servicios:</h1>
-            <p class="services__text">
-                En Larezza no solo cuidamos tu piel, cuidamos de ti.
-            </p>
-            <div class="services__cards">
-                <ServicesCarrousel client:load />
-            </div>
-        </div>
+    <div class="services__information">
+      <h1 class="services__title">Nuestros Servicios:</h1>
+      <p class="services__text">
+        En Larezza no solo cuidamos tu piel, cuidamos de ti.
+      </p>
+      <div class="services__cards">
+        <ServicesCarrousel data={servicesData} client:load />
+      </div>
     </div>
+  </div>
 </section>
 
 <style>
-    @reference "@/styles/app.css";
+  @reference "@/styles/app.css";
 
-    .services {
-        @apply bg-gradient-to-t from-white via-foreground to-white;
-    }
+  .services {
+    @apply bg-gradient-to-t from-white via-foreground to-white;
+  }
 
-    .services__container {
-        @apply grid grid-cols-1 md:grid-cols-2 gap-10 py-10 place-items-center relative;
-        /* @apply bg-foreground bg-gradient-to-b to-white; */
-    }
+  .services__container {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-10 py-10 place-items-center relative ;
+    /* @apply bg-foreground bg-gradient-to-b to-white; */
+  }
 
-    .services__image {
-        @apply w-full max-w-[604px] mx-auto place-content-center;
-    }
+  .services__image {
+    @apply w-full max-w-[604px] mx-auto place-content-center;
+  }
 
-    .services__information {
-        @apply w-full text-center md:text-left py-10 md:py-0;
-    }
+  .services__information {
+    @apply w-full text-center md:text-left py-10 md:py-0;
+  }
 
-    .services__title {
-        @apply text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl text-primary font-medium mb-3;
-    }
+  .services__title {
+    @apply text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl text-primary font-medium mb-3;
+  }
 
-    .services__text {
-        @apply text-xl lg:text-2xl text-primary mb-8;
-    }
+  .services__text {
+    @apply text-xl lg:text-2xl text-primary mb-8;
+  }
 
-    .services__cards {
-        @apply grid grid-cols-1 gap-4;
-    }
+  .services__cards {
+    @apply grid grid-cols-1 gap-4;
+  }
 </style>
 
 <script>
-    addEventListener("DOMContentLoaded", () => {
-        const info = document.querySelector(".services__information");
-        const image = document.querySelector(".services__image");
+  addEventListener("DOMContentLoaded", () => {
+    const info = document.querySelector(".services__information");
+    const image = document.querySelector(".services__image");
 
-        (info as HTMLElement).style.opacity = "0";
-        (image as HTMLElement).style.opacity = "0";
+    (info as HTMLElement).style.opacity = "0";
+    (image as HTMLElement).style.opacity = "0";
 
-        const infoObserver = new IntersectionObserver(
-            ([entry]) => {
-                if (!entry) return;
-                const isVisible = entry.isIntersecting;
-                isVisible && info ? info.classList.add("fadeIn") : null;
-            },
-            { threshold: 0 },
-        );
-        info && infoObserver.observe(info);
+    const infoObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && info ? info.classList.add("fadeIn") : null;
+      },
+      { threshold: 0 }
+    );
+    info && infoObserver.observe(info);
 
-        const imageObserver = new IntersectionObserver(
-            ([entry]) => {
-                if (!entry) return;
-                const isVisible = entry.isIntersecting;
-                isVisible && image ? image.classList.add("fadeIn") : null;
-            },
-            { threshold: 0 },
-        );
-        image && imageObserver.observe(image);
-    });
+    const imageObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        const isVisible = entry.isIntersecting;
+        isVisible && image ? image.classList.add("fadeIn") : null;
+      },
+      { threshold: 0 }
+    );
+    image && imageObserver.observe(image);
+  });
 </script>
