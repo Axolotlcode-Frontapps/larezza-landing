@@ -43,8 +43,8 @@ const data = [
 
 <section class="section facials" id="facials">
   <div class="section__container facials__container">
-    <Image src={Img} alt="statistics" class="facials__image" />
-    <div class="facials__information">
+    <Image src={Img} alt="statistics" class="facials__image md:order-2" />
+    <div class="facials__information md:order-1">
       <h1 class="facials__title">Faciales</h1>
       <p class="facials__text">
         Ilumina tu piel, renueva tu textura y descubre resultados visibles con
@@ -91,7 +91,7 @@ const data = [
   }
 
   .facials__image {
-    @apply w-full max-w-[500px] object-contain self-start;
+    @apply w-full max-w-[500px] object-contain self-start ;
   }
 </style>
 
