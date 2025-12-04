@@ -1,5 +1,6 @@
 ---
-import Image from "../../assets/images/essence.svg";
+import { Image } from "astro:assets";
+import ImageSection from "../../assets/images/essence.svg";
 ---
 
 <section class="section essence" id="AboutUs">
@@ -10,12 +11,10 @@ import Image from "../../assets/images/essence.svg";
         En <span class="essence__span">Larezza</span> creemos que la verdadera belleza
         surge cuando cuerpo y alma están en equilibrio.
       </p>
-      <p class="essence__text">No transformamos, revelamos tu luz interior.</p>
+      <!-- <p class="essence__text">No transformamos, revelamos tu luz interior.</p> -->
     </div>
     <div class="essence__image">
-      <Image
-        class="size-65 sm:size-115 md:size-100 lg:size-110 xl:size-150 2xl:size-190"
-      />
+      <Image src={ImageSection} alt="essence image" class="w-full" />
     </div>
   </div>
 </section>
@@ -28,7 +27,7 @@ import Image from "../../assets/images/essence.svg";
   }
 
   .essence__container {
-    @apply grid grid-cols-1 md:grid-cols-[2fr_3fr] lg:grid-cols-2  xl:grid-cols-[2fr_3fr] py-10;
+    @apply grid grid-cols-1 md:grid-cols-[2fr_3fr] py-10;
   }
 
   .essence__information {
@@ -36,11 +35,11 @@ import Image from "../../assets/images/essence.svg";
   }
 
   .essence__title {
-    @apply text-3xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-primary font-medium mb-3;
+    @apply text-4xl md:text-[48px] leading-[100%] text-start text-primary font-medium mb-3 font-bacasime-antique;
   }
 
   .essence__text {
-    @apply text-xl lg:text-2xl text-primary mb-6 md:mr-5;
+    @apply text-2xl leading-[110%] text-primary mb-6 md:mr-5 text-start;
   }
 
   .essence__span {
