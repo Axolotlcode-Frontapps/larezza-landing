@@ -8,9 +8,9 @@ const data = [
   {
     title: "Depilación Láser con Diodo",
     items: [
-      "Elimina el vello desde la raíz de forma segura y duradera.",
-      "Reduce grasa, acné y pigmentación irregular.",
-      "Deja la piel suave, sin irritación y apto para todo tipo de piel. ",
+      "Elimina el vello desde la raíz de forma segura y duradera ayudando a reducir el crecimiento progresivamente",
+      "Procedimiento seguro, eficaz y con resultados duraderos.",
+      "Apto para todo tipo de piel y para cualquier zona del cuerpo.",
     ],
   },
 ];
@@ -18,7 +18,7 @@ const data = [
 
 <section class="section HairRemoval" id="hair-removal">
   <div class="section__container HairRemoval__container">
-    <div class="HairRemoval__information">
+    <div class="HairRemoval__information order-2 md:order-1">
       <h1 class="HairRemoval__title">Depilación</h1>
       <p class="HairRemoval__text">
         Olvídate del vello, disfruta suavidad duradera y vive una experiencia
@@ -31,7 +31,7 @@ const data = [
       </ScrollArea>
     </div>
 
-    <Image src={Img} alt="statistics" class="HairRemoval__image" />
+    <Image src={Img} alt="statistics" class="HairRemoval__image order-1 md:order-2" />
   </div>
 </section>
 
@@ -43,27 +43,27 @@ const data = [
   }
 
   .HairRemoval__container {
-    @apply flex flex-col lg:flex-row sm:justify-between gap-8 xl:gap-40 py-10;
+    @apply w-full grid grid-cols-1 md:grid-cols-2 sm:justify-between gap-8 xl:gap-40 py-10;
   }
 
   .HairRemoval__information {
-    @apply w-full max-h-[824px] overflow-hidden;
+    @apply w-full ;
   }
 
   .HairRemoval__title {
-    @apply text-center lg:text-left text-3xl md:text-6xl text-primary font-medium mb-3;
+    @apply  text-4xl md:text-[48px] leading-[100%] text-start text-primary font-medium mb-3 font-bacasime-antique;
   }
 
   .HairRemoval__text {
-    @apply text-center lg:text-left text-xl md:text-2xl text-primary mb-3;
+    @apply text-start text-2xl leading-[110%] text-primary mb-3;
   }
 
   .HairRemoval__cards {
-    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 pt-3;
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-4 pt-3;
   }
 
   .HairRemoval__image {
-    @apply w-full h-full mx-auto max-w-[670px] min-h-[824px] max-h-[824px] my-auto lg:mt-auto lg:mb-0 object-contain;
+    @apply w-full max-w-[500px] object-contain self-start;
   }
 </style>
 
@@ -89,7 +89,7 @@ const data = [
       ([entry]) => {
         if (!entry) return;
         const isVisible = entry.isIntersecting;
-        isVisible && image ? image.classList.add("fadeInFromRight") : null;
+        isVisible && image ? image.classList.add("fadeIn") : null;
       },
       { threshold: 0 },
     );
