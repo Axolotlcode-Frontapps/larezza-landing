@@ -22,7 +22,7 @@ const data = [
       <h1 class="HairRemoval__title">Depilación</h1>
       <p class="HairRemoval__text">
         Olvídate del vello, disfruta suavidad duradera y vive una experiencia
-        láser segura, elegante y confortable siempre.
+        laser segura y confortable siempre.
       </p>
       <ScrollArea className="h-full px-3 lg:px-0" client:visible>
         <div class="HairRemoval__cards">
@@ -31,7 +31,11 @@ const data = [
       </ScrollArea>
     </div>
 
-    <Image src={Img} alt="statistics" class="HairRemoval__image order-1 md:order-2" />
+    <Image
+      src={Img}
+      alt="statistics"
+      class="HairRemoval__image order-1 md:order-2"
+    />
   </div>
 </section>
 
@@ -47,11 +51,11 @@ const data = [
   }
 
   .HairRemoval__information {
-    @apply w-full ;
+    @apply w-full;
   }
 
   .HairRemoval__title {
-    @apply  text-4xl md:text-[48px] leading-[100%] text-start text-primary font-medium mb-3 font-bacasime-antique;
+    @apply text-4xl md:text-[48px] leading-[100%] text-start text-primary font-medium mb-3 font-bacasime-antique;
   }
 
   .HairRemoval__text {
@@ -81,7 +85,7 @@ const data = [
         const isVisible = entry.isIntersecting;
         isVisible && info ? info.classList.add("fadeInFromLeft") : null;
       },
-      { threshold: 0 },
+      { threshold: 0 }
     );
     info && infoObserver.observe(info);
 
@@ -91,7 +95,7 @@ const data = [
         const isVisible = entry.isIntersecting;
         isVisible && image ? image.classList.add("fadeIn") : null;
       },
-      { threshold: 0 },
+      { threshold: 0 }
     );
     image && imageObserver.observe(image);
   });

@@ -5,6 +5,7 @@ import { CardServices } from "@/ui/shared/services-cards/services-cards";
 interface Props {
 	data: {
 		title: string;
+		subtitle?: string;
 		text?: string;
 		link?:	string;
 		items?: string[];
