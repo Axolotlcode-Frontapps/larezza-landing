@@ -20,7 +20,7 @@ export function CardServices({ title, subtitle, text, link, items }: Props) {
         </CardHeader>
         <div className="bg-primary-foreground absolute size-17.25 rounded-full -top-12.5 -right-6.5 -z-10"></div>
 
-        {text && <p className="inline-block mb-20">{text}</p>}
+        {text && <p className="inline-block mb-20 text-start">{text}</p>}
         {items ? (
           <ul className="grid gap-3 mb-15">
             {items.map((item) => (
