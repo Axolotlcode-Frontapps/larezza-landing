@@ -2,18 +2,20 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../card";
 
 interface Props {
   title: string;
+  subtitle?: string;
   text?: string;
   link?: string;
   items?: string[];
 }
 
-export function CardServices({ title, text, link, items }: Props) {
+export function CardServices({ title, subtitle, text, link, items }: Props) {
   return (
     <Card className="border-primary h-full bg-transparent overflow-hidden text-primary rounded-[40px]">
       <CardContent className="relative h-full flex flex-col px-4 sm:px-8 lg:px-4 xl:px-8">
         <CardHeader className="px-0 relative z-20">
           <CardTitle className="text-2xl font-bold mb-12 min-h-16 text-start mr-5">
             {title}
+            {subtitle ? <span className="w-fit flex text-base">{subtitle}</span> : null}
           </CardTitle>
         </CardHeader>
         <div className="bg-primary-foreground absolute size-17.25 rounded-full -top-12.5 -right-6.5 -z-10"></div>
