@@ -1,3 +1,5 @@
+<img src="./src/assets/images/logo.svg" alt="Larezza" width="300">
+
 # Larezza Landing Page
 Empresa encargada a la experiencia de belleza que combina tecnologia estetica y tecnicas manuales expertas
 
